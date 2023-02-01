@@ -1,9 +1,10 @@
 import NextAuth from 'next-auth';
 import EmailProvider from 'next-auth/providers/email';
-import TwitterProvider from 'next-auth/providers/twitter'
+import TwitterProvider from 'next-auth/providers/twitter';
+import GoogleProvider from 'next-auth/providers/google'
 import { MongoDBAdapter } from "@next-auth/mongodb-adapter";
 import clientPromise from '@/db/config/authAdaptor';
-
+/**in production I will need to back to all of these accounts and add my production urls */
 export default NextAuth({
 	providers: [
 		TwitterProvider({
@@ -20,6 +21,18 @@ export default NextAuth({
 				},
 			},
 			from: process.env.EMAIL_FROM,
+		}),
+		GoogleProvider({
+			clientId: process.env.GOOGLE_CLIENT_ID,
+			clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+			/**this will cause a user to verify which account to use each time I put it up for development,but will prob tak out in production*/
+			authorization: {
+				params: {
+				  prompt: "consent",
+				  access_type: "offline",
+				  response_type: "code"
+				}
+			  }
 		}),
 	],
 	pages: {
