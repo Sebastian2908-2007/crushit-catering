@@ -1,20 +1,13 @@
-import { useRouter } from 'next/router';
-/**imports to use with next auth*/
-import { useSession, signOut} from 'next-auth/react';
 import styles from '@/styles/Home.module.css';
 import Link from 'next/link';
+import NavMenu from './NavMenu';
 const Layout = ({ children }) => {
-    const { data: session } = useSession()
-    const { push } = useRouter()
-	const handleSignOut = async () => {
-		const data = await signOut({ redirect: false, callbackUrl: '/' })
-
-		push(data.url)
-	}
-
 return(
     <>
-    <header><span>CrushIt Catering</span>{session ? <button onClick={handleSignOut}>sign out</button>:<Link href='/signin'>Signin</Link>}</header>
+    <header className='flex flex-row justify-between p-2'>
+        <span>CrushIt Catering</span>
+        <NavMenu/>
+    </header>
     <main className={styles.main}>
         {children}
     </main>

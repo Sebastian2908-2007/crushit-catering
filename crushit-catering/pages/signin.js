@@ -2,7 +2,6 @@ import { useState } from 'react';
 import { useRouter } from 'next/router';
 /**imports to use with next auth*/
 import { useSession, signIn} from 'next-auth/react';
-import styles from '@/styles/Home.module.css';
 import {BsTwitter,BsGoogle} from 'react-icons/bs';
 
 /**these will have the name and provider of which to log in with*/
@@ -47,7 +46,7 @@ const Signin = () => {
 	}
 
     return(
-        <main className={styles.main}>
+        <section>
         <form onSubmit={handleSubmit}
         className='
          flex flex-col
@@ -72,7 +71,7 @@ const Signin = () => {
 					</button>
 				))}
         </div>
-        </main>
+        </section>
     );
 };
 
