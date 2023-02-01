@@ -1,6 +1,9 @@
 import Head from 'next/head';
+import { useStoreContext } from '@/utils/Globalstate';
 
 export default function Home() {
+  const [state, dispatch] = useStoreContext();
+  console.log(state);
   return (
     <>
       <Head>
