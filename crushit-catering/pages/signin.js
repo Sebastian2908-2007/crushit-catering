@@ -1,8 +1,22 @@
 import { useState } from 'react';
 import { useRouter } from 'next/router';
 /**imports to use with next auth*/
-import { useSession, signIn, signOut } from 'next-auth/react';
+import { useSession, signIn} from 'next-auth/react';
 import styles from '@/styles/Home.module.css';
+import {BsTwitter,BsGoogle} from 'react-icons/bs';
+
+/**these will have the name and provider of which to log in with*/
+
+const providers = [
+	{
+		name: 'twitter',
+		Icon: BsTwitter,
+	},
+	{
+		name: 'google',
+		Icon: BsGoogle,
+	},
+]
 
 const Signin = () => {
 
@@ -22,7 +36,7 @@ const Signin = () => {
 	}
 
     /**below function will help us sign in with things like twitter etc */
-	//const handleOAuthSignIn = (provider) => () => signIn(provider)
+	const handleOAuthSignIn = (provider) => () => signIn(provider)
 
 	const handleSubmit = (e) => {
 		e.preventDefault()
@@ -48,6 +62,16 @@ const Signin = () => {
             <input  name="email" onChange={(e) => setEmail(e.target.value)}/>
             <button type='submit'>Sign in</button>
         </form>
+        <div>
+        {providers.map(({ name, Icon }) => (
+					<button
+						key={name}
+						onClick={handleOAuthSignIn(name)}
+					>
+						<Icon /> Sign in with {name}
+					</button>
+				))}
+        </div>
         </main>
     );
 };
