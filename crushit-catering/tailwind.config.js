@@ -5,7 +5,12 @@ module.exports = {
     "./components/**/*.{js,ts,jsx,tsx}"
   ],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        'site-yellow': 'rgb(255 199 44)',
+        'site-red':'rgb(218 41 28)'
+      },
+    },
   },
   variants: {
     display: ["responsive", "focus", "dropdown"]
