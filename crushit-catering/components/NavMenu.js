@@ -14,10 +14,29 @@ const NavMenu = () => {
 
     return(
         <button
-      className="dropdown:block relative px-2 py-1 text-sm font-semibold 
-      leading-relaxed text-white transition-colors duration-150 bg-site-red border border-site-yellow
-       rounded-lg focus:outline-none hover:border-site-yellow focus:shadow-outline focus:border-site-yellow
-       shrink w-20 h-10 m-[2%]
+      className="dropdown:block
+       relative
+       px-2
+       py-1
+       text-sm
+       font-semibold
+      leading-relaxed
+       text-white
+       transition-colors
+       duration-150
+       bg-site-red
+       border
+       border-site-yellow
+       rounded-lg
+        focus:outline-none
+        hover:border-site-yellow
+        focus:shadow-outline
+        focus:border-site-yellow
+       shrink
+        w-20
+        h-10
+        m-[2%]
+        z-50
        "
       role="navigation"
       aria-haspopup="true"
@@ -38,7 +57,19 @@ const NavMenu = () => {
         </svg>
       </div>
       <ul
-        className="left-0 hidden w-auto p-1 mt-3 space-y-2 text-sm bg-site-red border border-site-yellow rounded-lg shadow-lg"
+        className="left-0
+         hidden
+         w-auto
+         p-1
+         mt-3
+         space-y-2
+         text-sm
+         bg-site-red
+         border
+         border-site-yellow
+         rounded-lg
+         shadow-lg
+         "
         aria-label="submenu"
       >
         <li
