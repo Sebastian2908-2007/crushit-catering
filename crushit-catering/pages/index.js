@@ -7,6 +7,7 @@ import displayPic2 from '../public/cic-display-pic (2).png'
 import displayPic3 from '../public/cic-display-pic (3).png'
 import displayPic4 from '../public/cic-display-pic (4).png'
 import displayPic5 from '../public/cic-display-pic (5).png'
+import SigninModal from '@/components/SigninModal';
 const imgStyle = {
   objectFit:'contain',
   width:'100%',
@@ -53,7 +54,7 @@ export default function Home() {
         </div>
       </section>
 
-      <button className='
+     {/*} <button className='
        mt-4
        p-2
        font-semibold
@@ -70,7 +71,9 @@ export default function Home() {
        z-50
        '>
         Menu
-      </button>
+      </button>*/}
+      <SigninModal/>
+  
 
       <section className='w-full xl:w-[98%] 2xl:w-[78%] p-4'>
       <div className='
