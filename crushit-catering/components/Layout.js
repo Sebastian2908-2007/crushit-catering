@@ -8,7 +8,7 @@ import {FiTwitter,FiInstagram} from 'react-icons/fi';
 const Layout = ({ children }) => {
 return(
     <>
-    <header className='flex flex-row justify-between p-2  shadow-2xl'>
+    <header className='flex flex-row justify-between p-2  lg:shadow-2xl lg:shadow-site-yellow'>
         <Link className='mt-[1%]' href='/'>
         <Image 
         src='/crushitcatering-logo.png'

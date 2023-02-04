@@ -31,20 +31,22 @@ export default function Home() {
        xl:w-[85%]
        2xl:w-[95%]
        2xl:mt-[3%]
+       lg:shadow-lg
+       lg:shadow-site-yellow
        relative
        '>
         <div className='
          md:w-full
          h-[40vh]
-         md:h-[33vh]
-         lg:h-[70vh]
-         xl:h-[63vh]
-         2xl:h-[55vh]
+         md:h-[50vh]
+         lg:h-[80vh]
+        
+         2xl:h-[85vh]
         '>
         <Image
         src={heroPic}
         alt='some really nice nachos that will make you very hungry'
-        className='lg:rounded lg:border lg:border-2 lg:border-white'
+       
         //style={imgStyle}
         fill
         />
@@ -116,7 +118,7 @@ export default function Home() {
         <p className='mt-2 drop-shadow-black text-center lg:text-lg'>
          Our passion for authentic Mexican cuisine is reflected in every dish we prepare, using only the freshest ingredients and traditional cooking methods.
          </p>
-  <div className='relative h-48 mt-4 mb-4 sm:h-80 sm:w-4/5 xl:w-2/3 xl:h-96'>
+  <div className='relative h-48 mt-4 mb-4 sm:h-80 sm:w-4/5 xl:w-2/3 xl:h-96 2xl:h-[34rem]'>
   <Image
   src={displayPic1}
   alt=""
@@ -135,7 +137,7 @@ Our menu features a wide range of mouth-watering options, from classic tacos and
 
 As a family business, we understand the importance of bringing people together over a delicious meal.
 </p>
-<div className='relative h-48 mt-4 mb-4 sm:h-80 sm:w-4/5 xl:w-2/3 xl:h-96'>
+<div className='relative h-48 mt-4 mb-4 sm:h-80 sm:w-4/5 xl:w-2/3 xl:h-96 2xl:h-[34rem]'>
   <Image
   src={displayPic2}
   alt=""
@@ -150,7 +152,7 @@ As a family business, we understand the importance of bringing people together o
 <p className='mt-2 drop-shadow-black text-center lg:text-lg'>
 At Crush It Catering, we strive to not only satisfy your taste buds but also provide a warm and welcoming atmosphere for our customers. 
 </p>
-<div className='relative h-48 mt-4 mb-4 sm:h-80 sm:w-4/5 xl:w-2/3 xl:h-96'>
+<div className='relative h-48 mt-4 mb-4 sm:h-80 sm:w-4/5 xl:w-2/3 xl:h-96 2xl:h-[34rem]'>
   <Image
   src={displayPic3}
   alt=""
@@ -162,7 +164,7 @@ At Crush It Catering, we strive to not only satisfy your taste buds but also pro
 We are grateful for the support we have received from the community over the years and look
  forward to continuing to serve you for many more to come.
  </p>
- <div className='relative h-48 mt-4 mb-4 sm:h-80 sm:w-4/5 xl:w-2/3 xl:h-96'>
+ <div className='relative h-48 mt-4 mb-4 sm:h-80 sm:w-4/5 xl:w-2/3 xl:h-96 2xl:h-[34rem]'>
   <Image
   src={displayPic4}
   alt=""
@@ -173,7 +175,7 @@ We are grateful for the support we have received from the community over the yea
 <p className='mt-2 drop-shadow-black text-center lg:text-lg'>
 So whether you're in the mood for a quick lunch or planning a large gathering, Crush It Catering is the perfect choice for all your Mexican food cravings. Order now and taste the difference that 40 years of experience can make."
 </p>
-<div className='relative h-48 mt-4 mb-4 sm:h-80 sm:w-4/5 xl:w-2/3 xl:h-96'>
+<div className='relative h-48 mt-4 mb-4 sm:h-80 sm:w-4/5 xl:w-2/3 xl:h-96 2xl:h-[34rem]'>
   <Image
   src={displayPic5}
   alt=""
