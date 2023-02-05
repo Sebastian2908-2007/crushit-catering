@@ -36,7 +36,7 @@ const NavMenu = () => {
         w-20
         h-10
         m-[2%]
-        z-50
+        z-30
        "
       role="navigation"
       aria-haspopup="true"

@@ -1,8 +1,8 @@
 import styles from '@/styles/Home.module.css';
 import Link from 'next/link';
 import NavMenu from './NavMenu';
+import Cart from './Cart';
 import Image from 'next/image';
-import {FaCartArrowDown} from 'react-icons/fa'
 import {ImFacebook} from 'react-icons/im';
 import {FiTwitter,FiInstagram} from 'react-icons/fi';
 const Layout = ({ children }) => {
@@ -17,7 +17,7 @@ return(
         height={60}
         />
         </Link>
-        <button className='text-site-yellow text-2xl'><FaCartArrowDown/></button>
+  <Cart/>
         <NavMenu/>
     </header>
     <main className={styles.main}>

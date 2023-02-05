@@ -29,7 +29,7 @@ const DrinkMenu = ({drinks,setChosenDrink}) => {
           w-32
           h-10
           mt-4
-          z-50
+          z-10
          "
         role="navigation"
         aria-haspopup="true"

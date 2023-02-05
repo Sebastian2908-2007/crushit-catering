@@ -35,7 +35,7 @@ const StoreProvider = ({ value=[], ...props }) => {
           main:"4 Tamales",
           side:"beans rice",
           drink:"",
-          price:6.00,
+          price:6.33,
           image:'/4-Tamales.png'
             },
             {
