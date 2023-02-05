@@ -7,7 +7,7 @@ const Menu = () => {
     //console.log(drinks);
     useEffect(() => {console.log(state.cart);},[state.cart]);
     return(
-        <section className="w-full p-8 grid grid-cols-1 gap-1">
+        <section className="w-full p-4 grid grid-cols-1 gap-4">
           {meals.map(meal => (
             <MenuItem 
             key={meal._id}
