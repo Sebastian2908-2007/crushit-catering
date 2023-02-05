@@ -16,7 +16,7 @@ export const reducer = (state, action) => {
                      return{
                          ...state,
                          cartOpen: true,
-                         cart: [...state.cart, action.product] 
+                         cart: [...state.cart, action.meal] 
                      };
                  case ADD_MULTIPLE_TO_CART:
                      return {
@@ -25,8 +25,8 @@ export const reducer = (state, action) => {
                     }; 
                  case REMOVE_FROM_CART:
                      // filter throught the cart and return only products that do not match the provided id
-                     let newState = state.cart.filter(product => {
-                         return product._id !== action._id
+                     let newState = state.cart.filter(meal => {
+                         return meal._id !== action._id
                      });
                      return {
                          ...state,
@@ -43,11 +43,11 @@ export const reducer = (state, action) => {
 
                         cartOpen: true,
 
-                        cart: state.cart.map(product => {
-                            if (action._id === product._id) {
-                                product.purchaseQuantity = action.purchaseQuantity;
+                        cart: state.cart.map(meal => {
+                            if (action._id === meal._id) {
+                                meal.purchaseQuantity = action.purchaseQuantity;
                             }
-                            return product;
+                            return meal;
                         })
                      };
                  case CLEAR_CART:

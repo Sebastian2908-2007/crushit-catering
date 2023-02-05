@@ -1,6 +1,5 @@
 import Head from 'next/head';
 import Image from 'next/image';
-import { useStoreContext } from '@/utils/Globalstate';
 import heroPic from '../public/cic-home-hero.png'
 import displayPic1 from '../public/cic-display-pic (1).png'
 import displayPic2 from '../public/cic-display-pic (2).png'
@@ -8,15 +7,10 @@ import displayPic3 from '../public/cic-display-pic (3).png'
 import displayPic4 from '../public/cic-display-pic (4).png'
 import displayPic5 from '../public/cic-display-pic (5).png'
 import SigninModal from '@/components/SigninModal';
-const imgStyle = {
-  objectFit:'contain',
-  width:'100%',
-  //height: '10vh'
-}
+
 
 export default function Home() {
-  const [state, dispatch] = useStoreContext();
-  console.log(state);
+
   return (
     <>
       <Head>
@@ -47,31 +41,11 @@ export default function Home() {
         <Image
         src={heroPic}
         alt='some really nice nachos that will make you very hungry'
-       
-        //style={imgStyle}
         fill
         />
         </div>
       </section>
 
-     {/*} <button className='
-       mt-4
-       p-2
-       font-semibold
-       sticky
-       top-0 
-       border-2 
-       hover:border-white
-       hover:bg-site-yellow
-       hover:text-white
-       rounded-lg
-       border-white    
-       text-site-yellow
-       bg-site-red
-       z-50
-       '>
-        Menu
-      </button>*/}
       <SigninModal/>
   
 

@@ -18,7 +18,7 @@ const StoreProvider = ({ value=[], ...props }) => {
           _id: 1,
           main:"super Burrito",
           side:"beans rice",
-          drink:"pepsi products",
+          drink:"",
           price:5.77,
           image:'/super-burrito.png'
             },
@@ -26,7 +26,7 @@ const StoreProvider = ({ value=[], ...props }) => {
           _id: 2,
           main:"Tacos al Pastor",
           side:"beans rice",
-          drink:"pepsi products",
+          drink:"",
           price:7.99,
           image:'/Tacos-al-Pastor.png'
             },
@@ -34,7 +34,7 @@ const StoreProvider = ({ value=[], ...props }) => {
           _id: 3,
           main:"4 Tamales",
           side:"beans rice",
-          drink:"pepsi products",
+          drink:"",
           price:6.00,
           image:'/4-Tamales.png'
             },
@@ -42,7 +42,7 @@ const StoreProvider = ({ value=[], ...props }) => {
           _id: 4,
           main:"2 Tortas",
           side:"beans rice",
-          drink:"pepsi products",
+          drink:"",
           price:4.99,
           image:'/2-Tortas.png'
             },
@@ -50,7 +50,7 @@ const StoreProvider = ({ value=[], ...props }) => {
           _id: 5,
           main:"Chilaquiles",
           side:"beans rice",
-          drink:"pepsi products",
+          drink:"",
           price:6.99,
           image:'/Chilaquiles.png'
             },
@@ -58,7 +58,7 @@ const StoreProvider = ({ value=[], ...props }) => {
           _id: 6,
           main:"Huevos Rancheros",
           side:"beans rice",
-          drink:"pepsi products",
+          drink:"",
           price:11.99,
           image:'/Huevos-Rancheros.png'
             },
@@ -66,7 +66,7 @@ const StoreProvider = ({ value=[], ...props }) => {
           _id: 7,
           main:"2 Quesadillas",
           side:"beans rice",
-          drink:"pepsi products",
+          drink:"",
           price:8.99,
           image:'/2-Quesadillas.png'
             },
@@ -74,7 +74,7 @@ const StoreProvider = ({ value=[], ...props }) => {
           _id: 8,
           main:"Pozole",
           side:"beans rice",
-          drink:"pepsi products",
+          drink:"",
           price:5.99,
           image:'/Pozole.png'
             },
@@ -82,7 +82,7 @@ const StoreProvider = ({ value=[], ...props }) => {
           _id: 9,
           main:"Sopa de Lima",
           side:"beans rice",
-          drink:"pepsi products",
+          drink:"",
           price:8.99,
           image:'/Sopa-de-Lima.png'
             },
@@ -90,7 +90,7 @@ const StoreProvider = ({ value=[], ...props }) => {
           _id: 10,
           main:"Cochinita Pibil",
           side:"beans rice",
-          drink:"pepsi products",
+          drink:"",
           price:5.99,
           image:'/Cochinita-Pibil.png'
             },
@@ -98,7 +98,7 @@ const StoreProvider = ({ value=[], ...props }) => {
           _id: 11,
           main:"Cajeta",
           side:"beans rice",
-          drink:"pepsi products",
+          drink:"",
           price:4.99,
           image:'/Cajeta.png'
             },
@@ -106,7 +106,7 @@ const StoreProvider = ({ value=[], ...props }) => {
           _id: 12,
           main:"Carnitas",
           side:"beans rice",
-          drink:"pepsi products",
+          drink:"",
           price:12.88,
           image:'/Carnitas.png'
             },
@@ -114,7 +114,7 @@ const StoreProvider = ({ value=[], ...props }) => {
           _id: 13,
           main:"Mole",
           side:"beans rice",
-          drink:"pepsi products",
+          drink:"",
           price:11.50,
           image:'/Mole.png'
             },
@@ -122,7 +122,7 @@ const StoreProvider = ({ value=[], ...props }) => {
           _id: 14,
           main:"Tlayudas",
           side:"beans rice",
-          drink:"pepsi products",
+          drink:"",
           price:9.00,
           image:'/Tlayudas.png'
             },
@@ -130,10 +130,34 @@ const StoreProvider = ({ value=[], ...props }) => {
           _id: 15,
           main:"Chapulines",
           side:"beans rice",
-          drink:"pepsi products",
+          drink:"",
           price:4.99,
           image:'/Chapulines.png'
             },
+        ],
+        drinks:[
+          "Mountain Dew",
+          "Pepsi",
+          "Mug Root Beer",
+          "Sierra Mist",
+          "Pepsi Max",
+          "Diet Pepsi",
+          "Mountain Dew Code Red",
+          "Pepsi Wild Cherry",
+          "Mountain Dew Voltage",
+          "7 Up",
+          "Orange Crush",
+          "Mountain Dew Baja Blast",
+          "horchata",
+          "Jarritos Strawberry",
+          "Jarritos Grapefruit",
+          "Jarritos Lime Soda",
+          "Jarritos Mandarina Soft",
+          "Jarritos Pineapple",
+          "Jarritos Fruit Punch",
+          "Jarritos Guava Soda",
+          "Jarritos Mexican Cola",
+          "Mineragua - Jarritos Mineral Water"
         ],
         cart: [],
         cartOpen: false,

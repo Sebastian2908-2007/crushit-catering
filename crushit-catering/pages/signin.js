@@ -3,6 +3,7 @@ import { useRouter } from 'next/router';
 /**imports to use with next auth*/
 import { useSession, signIn} from 'next-auth/react';
 import {BsTwitter,BsGoogle} from 'react-icons/bs';
+import {TfiEmail} from 'react-icons/Tfi';
 
 /**these will have the name and provider of which to log in with*/
 
@@ -46,7 +47,90 @@ const Signin = () => {
 	}
 
     return(
-        <section>
+
+		<section className="
+		 mt-[30%]
+		 flex
+		 flex-col
+		 items-center
+		 justify-center
+		 content-center
+		 justify-items-center">
+		<form onSubmit={handleSubmit}
+		className='
+		flex flex-col
+		w-full
+		mb-6
+		border
+		border-4
+		border-white
+		p-4
+		rounded
+		'
+		
+		>
+			<label className="w-full text-center text-white">Sign in with email</label>
+			<input  name="email" placeholder="enter email to sign in" onChange={(e) => setEmail(e.target.value)}/>
+			<button className="
+			border
+			flex
+			flex-row
+			justify-center
+			mt-4 
+			rounded 
+			
+			p-2.5
+			hover:border-site-red 
+			hover:bg-site-yellow 
+			hover:text-site-red
+			type=submit"
+			>
+				<TfiEmail color="black"/>
+			  <span className="ml-[3rem]">Submit email</span>  
+			</button>
+		</form>
+		<div className="flex flex-col">
+		{providers.map(({ name, Icon }) => (
+					<button className="flex
+					 flex-row
+					 justify-center
+					 w-full
+					 mt-2
+					 p-2.5
+					 flex-1
+					 rounded-md
+					 outline-none
+					 border
+					 ring-offset-2
+					 ring-indigo-600
+					 focus:ring-2
+					 hover:border-site-red 
+					 hover:bg-site-yellow 
+					 hover:text-site-red
+					 "
+						key={name}
+						onClick={handleOAuthSignIn(name)}
+					>
+						<Icon color={name === 'twitter' ? '#1DA1F2':'rgba(218 ,41 ,28)'}/>
+						<span className="ml-2">Sign in with {name}</span> 
+					</button>
+				))}
+							 <button
+			className="w-full mt-2 p-2.5 flex-1 text-site-yellow bg-site-red rounded-md outline-none border  ring-offset-2 ring-indigo-600 focus:ring-2"
+			onClick={() =>
+				setShowModal(false)
+			}
+		>
+			Cancel
+		</button>
+		</div>
+	</section>
+		
+    );
+};
+
+export default Signin;
+        /*<section>
         <form onSubmit={handleSubmit}
         className='
          flex flex-col
@@ -71,8 +155,4 @@ const Signin = () => {
 					</button>
 				))}
         </div>
-        </section>
-    );
-};
-
-export default Signin;
+        </section>*/
