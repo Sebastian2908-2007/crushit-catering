@@ -2,6 +2,7 @@ import { useState,useEffect } from "react";
 import Image from "next/image";
 import DrinkMenu from "./DrinkMenu";
 import { ADD_TO_CART,UPDATE_CART_QUANTITY} from "@/utils/actions";
+import clientDatabase from "@/utils/dexiedb";
 const MenuItem = ({meal,drinks,dispatch,state}) => {
     /**state for chosen drink to be passed to drinkmenu*/
     const [chosenDrink,setChosenDrink] = useState(null);
@@ -36,6 +37,8 @@ const addToCart = () => {
       _id: _id,
       purchaseQuantity: parseInt(isItemInCart.purchaseQuantity) + 1
     });
+    /**below updates indexedDb in particular the purchaseQuantity field*/
+    clientDatabase.cart.update(meal._id,{purchaseQuantity:parseInt(isItemInCart.purchaseQuantity) + 1});
     setCrtBtnTxt('+1 meal added');
 setTimeout(() => {
   setCrtBtnTxt('Add To Cart');
@@ -46,6 +49,8 @@ setTimeout(() => {
       /**purchaseQuantity is not on data from db its created right here for the global state */
       meal: { ...meal, purchaseQuantity: 1 }
     });
+    /**add to indexedDb with dexie */
+    clientDatabase.cart.add({_id: _id,main:main,drink:meal.drink,price:price,image:image,purchaseQuantity:1,total:0});
   }
 };
     return(

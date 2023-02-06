@@ -1,11 +1,16 @@
+import { useState } from 'react';
 import styles from '@/styles/Home.module.css';
 import Link from 'next/link';
 import NavMenu from './NavMenu';
-import Cart from './Cart';
+import dynamic from "next/dynamic";
+const Cart = dynamic(() =>import( './Cart'),{ssr: false});
+import AddressModal from './AdressModal';
+//import Cart from './Cart';
 import Image from 'next/image';
 import {ImFacebook} from 'react-icons/im';
 import {FiTwitter,FiInstagram} from 'react-icons/fi';
 const Layout = ({ children }) => {
+    const [showAddressModal, setShowAddressModal] = useState(false);
 return(
     <>
     <header className='flex flex-row justify-between p-2  lg:shadow-2xl lg:shadow-site-yellow'>
@@ -17,7 +22,8 @@ return(
         height={60}
         />
         </Link>
-  <Cart/>
+  <Cart showAddressModal={showAddressModal} setShowAddressModal={setShowAddressModal}/>
+  <AddressModal showAddressModal={showAddressModal} setShowAddressModal={setShowAddressModal}/>
         <NavMenu/>
     </header>
     <main className={styles.main}>
