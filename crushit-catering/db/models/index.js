@@ -1,3 +1,3 @@
-import Product from './Test';
-
-module.exports = {Product};
+import User from './User';
+import Order from './Order';
+module.exports = {User,Order};

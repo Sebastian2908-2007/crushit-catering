@@ -1,43 +1,43 @@
-import {Product} from '../models';
+import {User} from '../models';
 
 const resolvers = {
     Query: {
       // products
-      getProducts: async () => {
+      getUsers: async () => {
         try {
-          const products = await Product.find({})
+          const Users = await User.find({});
   
-          return products
+          return Users;
         } catch (err) {
-          console.log(err)
+          console.log(err);
         }
       },
-      getProduct: async (_, { id }) => {
-        const product = await Product.findById(id)
+      getUser: async (_, { id }) => {
+        const User = await User.findById(id);
   
-        if (!product) {
-          throw new Error('Product not found')
+        if (!User) {
+          throw new Error('Product not found');
         }
   
-        return product
+        return User;
       },
     },
   
     Mutation: {
       // products
-      newProduct: async (_, { input }) => {
+      newUser: async (_, { userName }) => {
         try {
-          const product = new Product(input)
+          const user = await User.create({userName});
   
-          const result = await product.save()
+        
   
-          return result
+          return user;
         } catch (err) {
           console.log(err)
         }
       },
-      updateProduct: async (_, { id, input }) => {
-        let product = await Product.findById(id)
+      /*updateUser: async (_, { id, input }) => {
+        let product = await User.findOne(id)
   
         if (!product) {
           throw new Error('Product not found')
@@ -59,7 +59,7 @@ const resolvers = {
         await Product.findOneAndDelete({ _id: id })
   
         return 'Producto eliminado'
-      },
+      },*/
     },
   }
   

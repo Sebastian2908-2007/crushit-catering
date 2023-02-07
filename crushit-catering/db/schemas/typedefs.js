@@ -1,29 +1,67 @@
 import {gql} from "graphql-tag";
 
 const typeDefs = gql`
-  # Products
-  type Product {
-    id: ID
-    name: String
-    productionCapacity: Int
-    price: Float
-    description: String
+  type Address {
+      StreetAddress: String
+      city: String
+      state: String
+      zip: String
+      country: String
   }
-  input ProductInput {
-    name: String!
-    productionCapacity: Int!
-    price: Float!
-    description: String
+type Meal {
+  drink: String,
+  image: String,
+  main: String,
+  price: String,
+  purchaseQuantity: String,
+  total: String,
+  _id: String,
+}
+
+  type User {
+    _id: ID
+    userName: String
+    orders:[Order]
+    address: Address
+   createdAt: String
   }
+  
+  type Order {
+  _id: ID
+  isDelivery: Boolean
+  purchaseDate: String
+  meals:[Meal]
+}
+
+input OrderInput {
+  
+      drink: String
+      image: String
+      main: String
+      price: String
+      purchaseQuantity: String
+      total: String
+      _id: String
+  
+} 
+
+input AddressInput {
+      StreetAddress: String
+      city: String
+      state: String
+      zip: String
+      country: String
+  }
+
   type Query {
-    getProducts: [Product]
-    getProduct(id: ID!): Product
+    getUsers:[User]
+    getUser(userName:String): User
   }
   type Mutation {
     #Products
-    newProduct(input: ProductInput): Product
-    updateProduct(id: ID!, input: ProductInput): Product
-    deleteProduct(id: ID!): String
+    newUser(userName:String!): User
+    updateUserAddress(userName:String!,address:AddressInput): User
+    addOrder(isDelivery: Boolean, meals:[OrderInput]): Order
   }
 `
 

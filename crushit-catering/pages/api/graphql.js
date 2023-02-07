@@ -10,7 +10,7 @@ const server = new ApolloServer({
     typeDefs,
   });
   
-  console.log('http://localhost:3000//api/graphql');
+
 
 
   export default startServerAndCreateNextHandler(server);
