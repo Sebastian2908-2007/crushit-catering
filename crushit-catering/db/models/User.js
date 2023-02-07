@@ -14,12 +14,11 @@ const userSchema = new Schema({
   },
   orders:[Order.schema],
   address:{
-    StreetAddress: String,
+    streetAddress: String,
     city: String,
     state: String,
     zip: String,
     country: String,
-    required: false
   },
   createdAt: {
     type: Date,

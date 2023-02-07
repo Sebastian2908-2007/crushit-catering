@@ -2,7 +2,7 @@ import {gql} from "graphql-tag";
 
 const typeDefs = gql`
   type Address {
-      StreetAddress: String
+      streetAddress: String
       city: String
       state: String
       zip: String
@@ -46,11 +46,12 @@ input OrderInput {
 } 
 
 input AddressInput {
-      StreetAddress: String
-      city: String
-      state: String
-      zip: String
-      country: String
+      userName:String!
+      streetAddress: String!
+      city: String!
+      state: String!
+      zip: String!
+      country: String!
   }
 
   type Query {
@@ -60,8 +61,8 @@ input AddressInput {
   type Mutation {
     #Products
     newUser(userName:String!): User
-    updateUserAddress(userName:String!,address:AddressInput): User
-    addOrder(isDelivery: Boolean, meals:[OrderInput]): Order
+    updateUserAddress(input:AddressInput): User
+    addOrder(isDelivery: Boolean, userName:String! meals:[OrderInput]): User
   }
 `
 

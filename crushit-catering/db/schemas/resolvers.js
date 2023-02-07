@@ -1,4 +1,4 @@
-import {User} from '../models';
+import {User,Order} from '../models';
 
 const resolvers = {
     Query: {
@@ -36,30 +36,60 @@ const resolvers = {
           console.log(err)
         }
       },
-      /*updateUser: async (_, { id, input }) => {
-        let product = await User.findOne(id)
+      updateUserAddress: async (_, { input }) => {
   
-        if (!product) {
-          throw new Error('Product not found')
+       let user = await User.findOneAndUpdate(
+        /**No I still had an old spelling */
+      { userName: input.userName }, 
+
+       {
+      address:{
+          userName: input.userName,        
+          streetAddress: input.streetAddress,
+          city: input.city,
+          state: input.state,
+          zip: input.zip,
+          country: input.country,
+        }
+       }, {
+          new: true,
+        }).populate('address');
+
+        if (!user) {
+          throw new Error('user not found')
         }
   
-        product = await Product.findOneAndUpdate({ _id: id }, input, {
-          new: true,
-        })
-  
-        return product
+        return user;
       },
-      deleteProduct: async (_, { id }) => {
-        const product = await Product.findById(id)
+      
+      addOrder: async (_, { isDelivery,userName,meals }) => {
+        //console.log(userName);
+        //console.log(isDelivery);
+        console.log(meals);
+      
+        const order = await Order.create({
+          isDelivery: isDelivery,
+          meals: meals
+
+        });
+        
+        //console.log(order);
+        const user = await User.findOneAndUpdate(
+          {userName: userName},
+          {
+            $push: {orders: order}
+          },
+          {new: true}
+          ).populate('orders').populate('orders.meals');
   
-        if (!product) {
+        if (!user) {
           throw new Error('Producto no encontrado')
         }
   
-        await Product.findOneAndDelete({ _id: id })
+        console.log(user);
   
-        return 'Producto eliminado'
-      },*/
+        return user;
+      },
     },
   }
   
