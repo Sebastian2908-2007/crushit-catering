@@ -26,15 +26,16 @@ const resolvers = {
     Mutation: {
       // products
       newUser: async (_, { userName }) => {
+      const alreadyAUser = await User.findOne({userName:userName});
+     if(!alreadyAUser) {
         try {
           const user = await User.create({userName});
-  
-        
-  
           return user;
         } catch (err) {
           console.log(err)
         }
+       }
+       console.log('user is already active');
       },
       updateUserAddress: async (_, { input }) => {
   

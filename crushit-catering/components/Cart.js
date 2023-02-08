@@ -3,11 +3,22 @@ import {FaCartArrowDown} from 'react-icons/fa'
 import { useStoreContext } from '@/utils/Globalstate';
 import CartItem from './CartItem';
 import clientDatabase from "@/utils/dexiedb";
+/**mutation to add user to personal db*/
+import { NEW_USER } from '@/utils/mutations';
+import { useMutation } from '@apollo/client';
+/**import useSession from next/auth so we can use the email extracted to make our personal db user*/
+import {useSession} from 'next-auth/react';
 const Cart = ({showAddressModal, setShowAddressModal}) => {
+    /**get the next auth session*/
+    const { data: session } = useSession();
+    /**define create user mutation*/
+    const [createUser] = useMutation(NEW_USER);
+    //if (status) console.log(session.user.email);
+    //console.log(status);
     const [showModal, setShowModal] = useState(false);
     const [state, dispatch] = useStoreContext();
     const {cart} = state;
-    console.log(cart);
+   
     /**function to calculate the total */
 function calculateTotal() {
     let sum = 0;
@@ -20,11 +31,23 @@ function calculateTotal() {
     // toFixed will set the number of digits to appear after decimal point
     return sum.toFixed(2);
   };
+
+  const createNewUser = async () => {
+    try{
+   await createUser({
+    variables:{
+        userName: session.user.email
+    }
+   });
+    }catch(e){
+        console.log(e);
+    }
+  };
   
     return(
         <>
         <button
-        onClick={() => {setShowModal(true)}}
+        onClick={() => {setShowModal(true),createNewUser()}}
         className='
          text-site-yellow
          text-2xl

@@ -1,4 +1,43 @@
+import { useState,useEffect } from "react";
+import { ADD_ADDRESS } from "@/utils/mutations";
+import { useMutation } from '@apollo/client';
+/**import useSession from next/auth so we can use the email extracted to make our personal db user*/
+import {useSession} from 'next-auth/react';
 const AddressModal = ({showAddressModal, setShowAddressModal}) => {
+    const { data: session, status } = useSession();
+    const [addAddress] = useMutation(ADD_ADDRESS);
+    const [formData,setFormData] = useState({streetAddress:'',city:'',state:'',zip:'',country:''});
+
+    const handleChange = (event) => {
+        const {name,value} = event.target;
+        setFormData({
+            ...formData,
+            [name]:value
+        });
+    };
+
+useEffect(() => {console.log(formData)},[formData]);
+
+const handleSubmit = async () => {
+if(status){
+    try{
+    await addAddress({
+        variables:{
+            userName: session.user.email,
+            streetAddress: formData.streetAddress,
+            city: formData.city,
+            state: formData.state,
+            zip: formData.zip,
+            country: formData.country
+        }
+    });
+    setShowAddressModal(false)
+}catch(e) {
+    console.log(e);
+}
+ }
+};
+
     return(
         <>
         {showAddressModal ? (
@@ -25,18 +64,18 @@ const AddressModal = ({showAddressModal, setShowAddressModal}) => {
                              shadow-lg
                              p-6
                              ">
-                               <form className="bg-site-yellow p-4 flex flex-col rounded border border-4 border-white ">
+                               <form onSubmit={handleSubmit} className="bg-site-yellow p-4 flex flex-col rounded border border-4 border-white ">
                                 <label className="mt-4 text-center text-black">Street address</label>
-                                <input placeholder="Street Address" className="mt-4 rounded text-black"/>
+                                <input onChange={handleChange} name="streetAddress" placeholder="Street Address" className="mt-4 rounded text-black"/>
                                 <label className="mt-4 text-center text-black">City</label>
-                                <input placeholder="state" className="mt-4 rounded text-black"/>
+                                <input onChange={handleChange} name="city" placeholder="state" className="mt-4 rounded text-black"/>
                                 <label className="mt-4 text-center text-black">State</label>
-                                <input placeholder="zip" className="mt- rounded text-black"/>
+                                <input onChange={handleChange} name="state" placeholder="zip" className="mt- rounded text-black"/>
                                 <label className="mt-4 text-center text-black">Zip</label>
-                                <input placeholder="country" className="mt-4 rounded text-black"/>
+                                <input onChange={handleChange} name="zip" placeholder="country" className="mt-4 rounded text-black"/>
                                 <label className="mt-4 text-center text-black">Country</label>
-                                <input placeholder="Country" className="mt-4 rounded text-black"/>
-                                <button className="bg-site-red mt-4 rounded p-2 border border-2 border-white">Checkout</button>
+                                <input onChange={handleChange} name="country" placeholder="Country" className="mt-4 rounded text-black"/>
+                                <button type="submit" className="bg-site-red mt-4 rounded p-2 border border-2 border-white">Checkout</button>
                                </form>
                              </div>
                         </div>
