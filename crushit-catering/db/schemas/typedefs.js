@@ -12,10 +12,10 @@ type Meal {
   drink: String,
   image: String,
   main: String,
-  price: String,
-  purchaseQuantity: String,
+  price: Float,
+  purchaseQuantity: Int,
   total: String,
-  _id: String,
+  _id: Int,
 }
 
   type User {
@@ -38,10 +38,10 @@ input OrderInput {
       drink: String
       image: String
       main: String
-      price: String
-      purchaseQuantity: String
+      price: Float
+      purchaseQuantity: Int
       total: String
-      _id: String
+      _id: Int
   
 } 
 
@@ -53,13 +53,16 @@ input AddressInput {
       zip: String!
       country: String!
   }
+type Checkout {
+session: ID
+}
 
   type Query {
     getUsers:[User]
     getUser(userName:String): User
+    checkout(meals:[OrderInput]): Checkout
   }
   type Mutation {
-    #Products
     newUser(userName:String!): User
     updateUserAddress(input:AddressInput): User
     addOrder(isDelivery: Boolean, userName:String! meals:[OrderInput]): User
@@ -67,3 +70,4 @@ input AddressInput {
 `
 
 module.exports = typeDefs;
+

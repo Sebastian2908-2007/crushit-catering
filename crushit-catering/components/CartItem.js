@@ -1,6 +1,6 @@
 import { useStoreContext } from '@/utils/Globalstate';
 import Image from 'next/image';
-import {BsTrash} from 'react-icons/Bs';
+import {BsTrash} from 'react-icons/bs';
 import { REMOVE_FROM_CART, UPDATE_CART_QUANTITY } from '@/utils/actions';
 /**import my dexie singleton so that I can do delete cart items from local db as well as update purchase quantity if needed*/
 import clientDatabase from '@/utils/dexiedb';

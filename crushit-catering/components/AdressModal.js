@@ -1,9 +1,17 @@
 import { useState,useEffect } from "react";
 import { ADD_ADDRESS } from "@/utils/mutations";
-import { useMutation } from '@apollo/client';
+import { CHECKOUT } from "@/utils/queries";
+import { useStoreContext } from "@/utils/Globalstate";
+import { useMutation, useLazyQuery } from '@apollo/client';
 /**import useSession from next/auth so we can use the email extracted to make our personal db user*/
 import {useSession} from 'next-auth/react';
+/**stripe pub key*/
+import {loadStripe} from '@stripe/stripe-js';
+const stripePromise = loadStripe(  process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY);
 const AddressModal = ({showAddressModal, setShowAddressModal}) => {
+    const [state] = useStoreContext();
+    console.log(state.cart);
+    const [checkout,{data}] = useLazyQuery(CHECKOUT);
     const { data: session, status } = useSession();
     const [addAddress] = useMutation(ADD_ADDRESS);
     const [formData,setFormData] = useState({streetAddress:'',city:'',state:'',zip:'',country:''});
@@ -16,9 +24,21 @@ const AddressModal = ({showAddressModal, setShowAddressModal}) => {
         });
     };
 
-useEffect(() => {console.log(formData)},[formData]);
+//useEffect(() => {console.log(formData)},[formData]);
+const goToCheckout = async () => {
+   try{
+    await checkout({
+        variables:{
+            meals: state.cart
+        }
+    });
+   }catch(e){
+    console.log(e);
+   }
+};
 
-const handleSubmit = async () => {
+const handleSubmit = async (event) => {
+    event.preventDefault();
 if(status){
     try{
     await addAddress({
@@ -31,12 +51,22 @@ if(status){
             country: formData.country
         }
     });
-    setShowAddressModal(false)
+    setShowAddressModal(false);
+    goToCheckout();
 }catch(e) {
     console.log(e);
 }
  }
 };
+
+  /*if data var changes we will be redirected to stripe checkout page*/
+  useEffect(() => {
+    if (data) {
+        stripePromise.then((res) => {
+            res.redirectToCheckout({ sessionId: data.checkout.session });
+        });
+    }
+  }, [data]);
 
     return(
         <>

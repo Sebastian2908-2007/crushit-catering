@@ -3,6 +3,7 @@ import { startServerAndCreateNextHandler } from '@as-integrations/next';
 import {typeDefs,resolvers} from '../../db/schemas';
 import dbConnect from '@/db/config/connection';
 
+
 dbConnect();
 
 const server = new ApolloServer({
@@ -13,4 +14,7 @@ const server = new ApolloServer({
 
 
 
-  export default startServerAndCreateNextHandler(server);
+  export default startServerAndCreateNextHandler(server,{
+    context:  (req,res) => { return   req } 
+    //context: async (req, res) => ({ req, res, user: await getReq(req) })
+  });

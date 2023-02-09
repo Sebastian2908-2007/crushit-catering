@@ -5,6 +5,7 @@ import { useSession, signIn} from 'next-auth/react';
 import {BsTwitter,BsGoogle} from 'react-icons/bs';
 import {TfiEmail} from 'react-icons/Tfi'
 
+
 /**these will have the name and provider of which to log in with*/
 
 const providers = [

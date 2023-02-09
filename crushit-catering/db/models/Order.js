@@ -17,8 +17,8 @@ const orderSchema = new Schema({
             drink: String,
             image: String,
             main: String,
-            price: String,
-            purchaseQuantity: String,
+            price: Number,
+            purchaseQuantity: Number,
             total: String,
             _id: String,
         }

@@ -28,21 +28,9 @@ const httpLink = new HttpLink({
   uri: process.env.NEXT_PUBLIC_APOLLO_URI, // Server URL (must be absolute)
   credentials: 'same-origin', // Additional fetch() options like `credentials` or `headers`
 });
-/*const schemaLink = new SchemaLink({schema});*/
 
-/*const authLink = setContext((_, { headers }) => {
-  if (typeof window !== 'undefined') {
-    const token = localStorage.getItem('id_token');
-    return {
-      headers: {
-        ...headers,
-        authorization: token ? `Bearer ${token}` : '',
-      },
-    };
-   }
-   ,authLink
-});*/
-  
+
+
 
 
 function createApolloClient() {
