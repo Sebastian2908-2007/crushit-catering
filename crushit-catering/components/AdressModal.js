@@ -3,6 +3,8 @@ import { ADD_ADDRESS } from "@/utils/mutations";
 import { CHECKOUT } from "@/utils/queries";
 import { useStoreContext } from "@/utils/Globalstate";
 import { useMutation, useLazyQuery } from '@apollo/client';
+/**need to import this dynamic  */
+import clientDatabase from "@/utils/dexiedb";
 /**import useSession from next/auth so we can use the email extracted to make our personal db user*/
 import {useSession} from 'next-auth/react';
 /**stripe pub key*/
@@ -10,7 +12,6 @@ import {loadStripe} from '@stripe/stripe-js';
 const stripePromise = loadStripe(  process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY);
 const AddressModal = ({showAddressModal, setShowAddressModal}) => {
     const [state] = useStoreContext();
-    console.log(state.cart);
     const [checkout,{data}] = useLazyQuery(CHECKOUT);
     const { data: session, status } = useSession();
     const [addAddress] = useMutation(ADD_ADDRESS);
@@ -32,6 +33,7 @@ const goToCheckout = async () => {
             meals: state.cart
         }
     });
+   // clientDatabase.isDelivery.add(1);
    }catch(e){
     console.log(e);
    }

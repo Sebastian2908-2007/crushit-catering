@@ -2,9 +2,10 @@
 import Dexie from 'dexie';
 
 const clientDatabase =  new Dexie('crushitCatering');
-clientDatabase.version(1).stores({
+clientDatabase.version(2).stores({
     meals: '_id,main,drink,price,image,purchaseQuantity',
-    cart: '_id,main,side,drink,price,image,purchaseQuantity,total'
+    cart: '_id,main,side,drink,price,image,purchaseQuantity,total',
+    isDelivery: 'isDelivery'
 });
 
 export default clientDatabase;

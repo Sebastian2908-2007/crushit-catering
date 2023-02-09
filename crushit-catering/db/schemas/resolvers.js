@@ -5,6 +5,8 @@ const resolvers = {
     Query: {
       // meals
       getUsers: async (parent,args,context) => {
+        const url = new URL(context.headers.referer);
+        console.log(url.origin);
       //console.log(context);
         try {
           const Users = await User.find({});
@@ -49,7 +51,7 @@ const resolvers = {
           // generate price id using the meal id
           const price = await stripe.prices.create({
             product: product.id,
-            unit_amount: meals[i].price * 100,
+            unit_amount: meals[i].price * meals[i].purchaseQuantity * 100,
             currency: 'usd',
           });
   
@@ -65,7 +67,7 @@ const resolvers = {
           payment_method_types: ['card'],
           line_items,
           mode: 'payment',
-          success_url: `${url}?session_id={CHECKOUT_SESSION_ID}`,
+          success_url: `${url.origin}/success?session_id={CHECKOUT_SESSION_ID}`,
           cancel_url: `${url}`
         });
         return { session: session.id };
