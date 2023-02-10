@@ -8,14 +8,26 @@ import {useSession} from 'next-auth/react';
 
 const SuccessComponent = ({shouldBeDelivered,purchasedFood}) => {
     console.log(
-        'succes Comp rendering'
+        'INITIAL SBD',
+        shouldBeDelivered
     )
+
+if(shouldBeDelivered[0].isDelivery === 0) {
+    shouldBeDelivered = false
+    console.log('SHOULD BE FALSE',shouldBeDelivered);
+}else{
+    shouldBeDelivered = true
+    console.log('SHOULD BE TRUE',shouldBeDelivered);
+}
+
+console.log('OUTSIDE',shouldBeDelivered);
+
      /**get the next auth session*/
      const { data: session } = useSession();
     const [addOrder] = useMutation(ADD_ORDER);
     const [state, dispatch] = useStoreContext();
     
-    const addOrderToDb = async () => {
+   const addOrderToDb = async () => {
         try{
             await addOrder({
                 variables:{
@@ -24,9 +36,11 @@ const SuccessComponent = ({shouldBeDelivered,purchasedFood}) => {
                     meals: purchasedFood
                 }
             });
-        await clientDatabase.cart.clear();
-        await clientDatabase.isDelivery.clear();
+       
+
         window.location.assign('/');
+        await clientDatabase.isDelivery.clear();
+        await clientDatabase.cart.clear();
        return;
         }catch(e) {
             console.log(e);
@@ -45,7 +59,6 @@ const SuccessComponent = ({shouldBeDelivered,purchasedFood}) => {
 
     },[])
 
-        //addOrderToDb();
     return(
         purchasedFood.map(meal => (
             <MenuItem key={meal._id} meal={meal} state={state}/>

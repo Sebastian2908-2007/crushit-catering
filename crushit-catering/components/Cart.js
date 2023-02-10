@@ -1,20 +1,24 @@
-import { useState } from 'react';
+import { useState,useEffect } from 'react';
 import {FaCartArrowDown} from 'react-icons/fa'
 import { useStoreContext } from '@/utils/Globalstate';
 import CartItem from './CartItem';
 import clientDatabase from "@/utils/dexiedb";
 /**mutation to add user to personal db*/
 import { NEW_USER } from '@/utils/mutations';
-import { useMutation } from '@apollo/client';
+import { CHECKOUT } from "@/utils/queries";
+import { useMutation, useLazyQuery } from '@apollo/client';
 /**import useSession from next/auth so we can use the email extracted to make our personal db user*/
 import {useSession} from 'next-auth/react';
+/**stripe pub key*/
+import {loadStripe} from '@stripe/stripe-js';
+const stripePromise = loadStripe(  process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY);
+
 const Cart = ({setShowAddressModal}) => {
     /**get the next auth session*/
     const { data: session } = useSession();
     /**define create user mutation*/
     const [createUser] = useMutation(NEW_USER);
-    //if (status) console.log(session.user.email);
-    //console.log(status);
+    const [checkout,{data}] = useLazyQuery(CHECKOUT);
     const [showModal, setShowModal] = useState(false);
     const [state, dispatch] = useStoreContext();
     const {cart} = state;
@@ -43,6 +47,30 @@ function calculateTotal() {
         console.log(e);
     }
   };
+
+  const goToCheckout = async () => {
+    /**the isdelivery variable is used on success.js to determine whether or not the order to be added to the db is an order or delivery 0 for false 1 for true */
+    clientDatabase.isDelivery.add({isDelivery:0});
+    try{
+        await checkout({
+            variables:{
+                meals: state.cart
+            }
+        });
+    }catch(e) {
+        console.log(e);
+    }
+  };
+
+  
+  /*if data var changes we will be redirected to stripe checkout page*/
+  useEffect(() => {
+    if (data) {
+        stripePromise.then((res) => {
+            res.redirectToCheckout({ sessionId: data.checkout.session });
+        });
+    }
+  }, [data]);
   
     return(
         <>
@@ -95,7 +123,7 @@ function calculateTotal() {
                              mt-2
                              hover:bg-site-red
                              hover:text-site-yellow
-                            'onClick={()=> {console.log('checking out B')}}>
+                            'onClick={()=> {setShowModal(false),goToCheckout()}}>
                                 PickUp
                             </button>
                             <button
@@ -106,7 +134,7 @@ function calculateTotal() {
                              mt-2
                              hover:bg-site-red
                              hover:text-site-yellow
-                            'onClick={()=> {setShowModal(false),setShowAddressModal(true),clientDatabase.isDelivery.add({isDelivery:1})}}>
+                            'onClick={()=> {setShowModal(false),setShowAddressModal(true)}}>
                                 Delivery
                             </button>
                             </div>
@@ -124,3 +152,8 @@ function calculateTotal() {
 };
 
 export default Cart;
+
+/*
+THIS WAS TESTED IN THE DELIVERY BUTON ONCLICK FUNCTION! MOVING TO THE ADDRESS MODAL
+clientDatabase.isDelivery.add({isDelivery:1})
+*/

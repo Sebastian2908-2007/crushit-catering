@@ -41,6 +41,7 @@ const goToCheckout = async () => {
 
 const handleSubmit = async (event) => {
     event.preventDefault();
+    clientDatabase.isDelivery.add({isDelivery:1});
 if(status){
     try{
     await addAddress({
