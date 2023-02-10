@@ -23,7 +23,7 @@ return(
         height={60}
         />
         </Link>
-  <Cart showAddressModal={showAddressModal} setShowAddressModal={setShowAddressModal}/>
+  <Cart setShowAddressModal={setShowAddressModal}/>
   <AddressModal showAddressModal={showAddressModal} setShowAddressModal={setShowAddressModal}/>
         <NavMenu/>
     </header>

@@ -5,7 +5,7 @@ const Menu = () => {
     const [state, dispatch] = useStoreContext();
     const {meals,drinks} = state;
     //console.log(drinks);
-    useEffect(() => {console.log(state.cart);},[state.cart]);
+    //useEffect(() => {console.log(state.cart);},[state.cart]);
     return(
         <section className="w-full p-4 grid grid-cols-1 gap-4">
           {meals.map(meal => (

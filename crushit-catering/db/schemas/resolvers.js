@@ -121,6 +121,9 @@ const resolvers = {
         //console.log(userName);
         //console.log(isDelivery);
         console.log(meals);
+        if(!meals) {
+          return
+        }
       
         const order = await Order.create({
           isDelivery: isDelivery,
@@ -145,6 +148,10 @@ const resolvers = {
   
         return user;
       },
+      deleteUser: async (_,{userName}) => {
+       const deletedUser = await User.findOneAndDelete({userName: userName});
+       return deletedUser;
+      }
     },
   }
   

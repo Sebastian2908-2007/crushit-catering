@@ -8,7 +8,7 @@ import { NEW_USER } from '@/utils/mutations';
 import { useMutation } from '@apollo/client';
 /**import useSession from next/auth so we can use the email extracted to make our personal db user*/
 import {useSession} from 'next-auth/react';
-const Cart = ({showAddressModal, setShowAddressModal}) => {
+const Cart = ({setShowAddressModal}) => {
     /**get the next auth session*/
     const { data: session } = useSession();
     /**define create user mutation*/
@@ -106,7 +106,7 @@ function calculateTotal() {
                              mt-2
                              hover:bg-site-red
                              hover:text-site-yellow
-                            'onClick={()=> {setShowModal(false),setShowAddressModal(true)}}>
+                            'onClick={()=> {setShowModal(false),setShowAddressModal(true),clientDatabase.isDelivery.add({isDelivery:1})}}>
                                 Delivery
                             </button>
                             </div>

@@ -7,7 +7,6 @@ import clientDatabase from "@/utils/dexiedb";
 const MenuItem = ({meal,drinks,dispatch,state}) => {
   const currentUrl = useRouter()
   const currentPage = currentUrl.pathname;
-  console.log(currentPage); 
     /**state for chosen drink to be passed to drinkmenu*/
     const [chosenDrink,setChosenDrink] = useState(null);
       /**this is state for the text that resides in the product item buttons so that it can be changed when adding to cart */

@@ -66,6 +66,7 @@ session: ID
     newUser(userName:String!): User
     updateUserAddress(input:AddressInput): User
     addOrder(isDelivery: Boolean, userName:String! meals:[OrderInput]): User
+    deleteUser(userName:String!): User
   }
 `
 
