@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import clientDatabase from "@/utils/dexiedb";
+import { useRouter } from 'next/router';
 import MenuItem from "@/components/MenuItem";
 import { useStoreContext } from '@/utils/Globalstate';
 import { useMutation } from "@apollo/client";
@@ -8,20 +8,12 @@ import {useSession} from 'next-auth/react';
 import { sendOrderconfirm } from "@/lib/emailerEndPoint";
 
 const SuccessComponent = ({shouldBeDelivered,purchasedFood}) => {
-    console.log(
-        'INITIAL SBD',
-        shouldBeDelivered
-    )
-
+ const router = useRouter();
 if(shouldBeDelivered[0].isDelivery === 0) {
     shouldBeDelivered = false
-    console.log('SHOULD BE FALSE',shouldBeDelivered);
 }else{
     shouldBeDelivered = true
-    console.log('SHOULD BE TRUE',shouldBeDelivered);
 }
-
-console.log('OUTSIDE',shouldBeDelivered);
 
      /**get the next auth session*/
      const { data: session } = useSession();
@@ -37,13 +29,10 @@ console.log('OUTSIDE',shouldBeDelivered);
                     meals: purchasedFood
                 }
             });
-       
-//console.log(addOrderResponse.data);
+
 const orders = addOrderResponse.data.addOrder.orders
 const mostRecentOrder = orders[orders.length -1]
 const userName = addOrderResponse.data.addOrder.userName
-//console.log(mostRecentOrder._id);
-//console.log(userName);
 
 const emailData = {
     userEmail: userName, 
@@ -52,9 +41,8 @@ const emailData = {
 console.log(emailData);
 await sendOrderconfirm(emailData);
 
-window.location.assign('/');
-await clientDatabase.isDelivery.clear();
-await clientDatabase.cart.clear();
+router.push('/success2');
+
        return;
         }catch(e) {
             console.log(e);
@@ -81,6 +69,4 @@ await clientDatabase.cart.clear();
 };
 
 export default SuccessComponent;
-/**
-    
- */
+

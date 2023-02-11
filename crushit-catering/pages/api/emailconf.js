@@ -2,7 +2,6 @@ import { transporter } from "@/emailerConfig/nodemailer";
 
 const handler = async (req, res) => {
   const data = req.body;
-  console.log('HANDLEr',data);
   if (!data || !data.orderNumber || !data.userEmail ) {
     return res.status(400).send({ message: "Bad request" });
   }
