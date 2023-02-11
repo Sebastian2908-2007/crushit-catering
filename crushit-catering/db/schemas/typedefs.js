@@ -59,7 +59,7 @@ session: ID
 
   type Query {
     getUsers:[User]
-    getUser(userName:String): User
+    getUser(userName:String!): User
     checkout(meals:[OrderInput]): Checkout
   }
   type Mutation {

@@ -5,7 +5,7 @@ import CartItem from './CartItem';
 import clientDatabase from "@/utils/dexiedb";
 /**mutation to add user to personal db*/
 import { NEW_USER } from '@/utils/mutations';
-import { CHECKOUT } from "@/utils/queries";
+import { CHECKOUT,GET_ONE_USER  } from "@/utils/queries";
 import { useMutation, useLazyQuery } from '@apollo/client';
 /**import useSession from next/auth so we can use the email extracted to make our personal db user*/
 import {useSession} from 'next-auth/react';
@@ -19,6 +19,7 @@ const Cart = ({setShowAddressModal}) => {
     /**define create user mutation*/
     const [createUser] = useMutation(NEW_USER);
     const [checkout,{data}] = useLazyQuery(CHECKOUT);
+    const [getUserInfo,{data:userData}] = useLazyQuery(GET_ONE_USER);
     const [showModal, setShowModal] = useState(false);
     const [state, dispatch] = useStoreContext();
     const {cart} = state;
@@ -62,6 +63,20 @@ function calculateTotal() {
     }
   };
 
+  const getPrevAddress = async () => {
+    if(session.user.email) {
+        try {
+     await getUserInfo({
+        variables:{
+            userName: session.user.email
+        }
+      });
+      console.log(userData);
+        }catch(e){
+            console.log(e);
+        }
+    }
+    };
   
   /*if data var changes we will be redirected to stripe checkout page*/
   useEffect(() => {
@@ -134,7 +149,7 @@ function calculateTotal() {
                              mt-2
                              hover:bg-site-red
                              hover:text-site-yellow
-                            'onClick={()=> {setShowModal(false),setShowAddressModal(true)}}>
+                            'onClick={()=> {setShowModal(false),setShowAddressModal(true),getPrevAddress()}}>
                                 Delivery
                             </button>
                             </div>

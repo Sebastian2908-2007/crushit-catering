@@ -2,7 +2,7 @@ import { useState,useEffect } from "react";
 import { ADD_ADDRESS } from "@/utils/mutations";
 import { CHECKOUT } from "@/utils/queries";
 import { useStoreContext } from "@/utils/Globalstate";
-import { useMutation, useLazyQuery } from '@apollo/client';
+import { useMutation, useLazyQuery,useQuery } from '@apollo/client';
 /**need to import this dynamic  */
 import clientDatabase from "@/utils/dexiedb";
 /**import useSession from next/auth so we can use the email extracted to make our personal db user*/
@@ -15,6 +15,10 @@ const AddressModal = ({showAddressModal, setShowAddressModal}) => {
     const [checkout,{data}] = useLazyQuery(CHECKOUT);
     const { data: session, status } = useSession();
     const [addAddress] = useMutation(ADD_ADDRESS);
+   
+            
+    
+    
     const [formData,setFormData] = useState({streetAddress:'',city:'',state:'',zip:'',country:''});
 
     const handleChange = (event) => {
@@ -38,6 +42,8 @@ const goToCheckout = async () => {
     console.log(e);
    }
 };
+
+
 
 const handleSubmit = async (event) => {
     event.preventDefault();

@@ -16,14 +16,15 @@ const resolvers = {
           console.log(err);
         }
       },
-      getUser: async (_, { id }) => {
-        const User = await User.findById(id);
+      getUser: async (_, { userName }) => {
+        if (!userName) return;
+        const user = await User.findOne({userName: userName});
   
         if (!User) {
           throw new Error('meal not found');
         }
   
-        return User;
+        return user;
       },
      checkout: async (parent,args, context) => {
       try{
