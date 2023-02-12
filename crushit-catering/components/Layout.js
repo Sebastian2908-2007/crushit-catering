@@ -12,6 +12,8 @@ import {ImFacebook} from 'react-icons/im';
 import {FiTwitter,FiInstagram} from 'react-icons/fi';
 const Layout = ({ children }) => {
     const [showAddressModal, setShowAddressModal] = useState(false);
+    const [prevAddress,setPrevAddress] = useState({streetAddress:null,city:null,state:null,zip:null,country:null});
+    //console.log(prevAddress);
 return(
     <>
     <header className='flex flex-row justify-between p-2  lg:shadow-2xl lg:shadow-site-yellow'>
@@ -23,8 +25,8 @@ return(
         height={60}
         />
         </Link>
-  <Cart setShowAddressModal={setShowAddressModal}/>
-  <AddressModal showAddressModal={showAddressModal} setShowAddressModal={setShowAddressModal}/>
+  <Cart setShowAddressModal={setShowAddressModal} setPrevAddress={setPrevAddress}/>
+  <AddressModal showAddressModal={showAddressModal} setShowAddressModal={setShowAddressModal} prevAddress={prevAddress} setPrevAddress={setPrevAddress}/>
         <NavMenu/>
     </header>
     <main className={styles.main}>

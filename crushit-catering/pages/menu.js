@@ -1,4 +1,3 @@
-import { useEffect } from 'react';
 import { useStoreContext } from '@/utils/Globalstate';
 import MenuItem from '@/components/MenuItem';
 const Menu = () => {

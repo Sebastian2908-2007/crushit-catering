@@ -13,12 +13,12 @@ import {useSession} from 'next-auth/react';
 import {loadStripe} from '@stripe/stripe-js';
 const stripePromise = loadStripe(  process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY);
 
-const Cart = ({setShowAddressModal}) => {
+const Cart = ({setShowAddressModal,setPrevAddress}) => {
     /**get the next auth session*/
     const { data: session } = useSession();
     /**define create user mutation*/
     const [createUser] = useMutation(NEW_USER);
-    const [checkout,{data}] = useLazyQuery(CHECKOUT);
+    const [checkout,{loading,data}] = useLazyQuery(CHECKOUT);
     const [getUserInfo,{data:userData}] = useLazyQuery(GET_ONE_USER);
     const [showModal, setShowModal] = useState(false);
     const [state, dispatch] = useStoreContext();
@@ -71,7 +71,6 @@ function calculateTotal() {
             userName: session.user.email
         }
       });
-      console.log(userData);
         }catch(e){
             console.log(e);
         }
@@ -86,6 +85,24 @@ function calculateTotal() {
         });
     }
   }, [data]);
+
+  useEffect(() => {
+    if (userData) {
+    const {
+        streetAddress,
+        city,
+        state,
+        zip,
+        country
+    } = userData.getUser.address;
+    
+    if(!streetAddress || !city || !state || !zip || !country ){
+        console.log('no prev address!!!')
+         return;
+        } 
+    setPrevAddress({streetAddress:streetAddress,city:city,state:state,zip:zip,country:country});
+    }
+  }, [userData]);
   
     return(
         <>

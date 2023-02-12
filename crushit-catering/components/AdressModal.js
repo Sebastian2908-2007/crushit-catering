@@ -10,9 +10,10 @@ import {useSession} from 'next-auth/react';
 /**stripe pub key*/
 import {loadStripe} from '@stripe/stripe-js';
 const stripePromise = loadStripe(  process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY);
-const AddressModal = ({showAddressModal, setShowAddressModal}) => {
+const AddressModal = ({showAddressModal, setShowAddressModal,prevAddress,setPrevAddress}) => {
+    //console.log('ADDModal',prevAddress);
     const [state] = useStoreContext();
-    const [checkout,{data}] = useLazyQuery(CHECKOUT);
+    const [checkout,{loading,data}] = useLazyQuery(CHECKOUT);
     const { data: session, status } = useSession();
     const [addAddress] = useMutation(ADD_ADDRESS);
    
@@ -20,8 +21,11 @@ const AddressModal = ({showAddressModal, setShowAddressModal}) => {
     
     
     const [formData,setFormData] = useState({streetAddress:'',city:'',state:'',zip:'',country:''});
-
+   
     const handleChange = (event) => {
+        if(prevAddress) {
+            setPrevAddress({streetAddress:null,city:null,state:null,zip:null,country:null})
+        }
         const {name,value} = event.target;
         setFormData({
             ...formData,
@@ -50,6 +54,8 @@ const handleSubmit = async (event) => {
     clientDatabase.isDelivery.add({isDelivery:1});
 if(status){
     try{
+        if(!prevAddress.streetAddress) {
+            console.log('no Prev address',prevAddress);
     await addAddress({
         variables:{
             userName: session.user.email,
@@ -62,6 +68,21 @@ if(status){
     });
     setShowAddressModal(false);
     goToCheckout();
+}else{
+    console.log('YES Prev address',prevAddress);
+    await addAddress({
+        variables:{
+            userName: session.user.email,
+            streetAddress: prevAddress.streetAddress,
+            city: prevAddress.city,
+            state: prevAddress.state,
+            zip: prevAddress.zip,
+            country: prevAddress.country
+        }
+    });
+    setShowAddressModal(false);
+    goToCheckout();
+}
 }catch(e) {
     console.log(e);
 }
@@ -76,6 +97,8 @@ if(status){
         });
     }
   }, [data]);
+
+
 
     return(
         <>
@@ -103,7 +126,12 @@ if(status){
                              shadow-lg
                              p-6
                              ">
+                                
                                <form onSubmit={handleSubmit} className="bg-site-yellow p-4 flex flex-col rounded border border-4 border-white ">
+                               {prevAddress.streetAddress && <button disabled={loading} onClick={(e) => {
+                                                      handleSubmit(e)}}>
+                                                       Use previous Address ?
+                                                            </button>}
                                 <label className="mt-4 text-center text-black">Street address</label>
                                 <input onChange={handleChange} name="streetAddress" placeholder="Street Address" className="mt-4 rounded text-black"/>
                                 <label className="mt-4 text-center text-black">City</label>
@@ -114,7 +142,7 @@ if(status){
                                 <input onChange={handleChange} name="zip" placeholder="country" className="mt-4 rounded text-black"/>
                                 <label className="mt-4 text-center text-black">Country</label>
                                 <input onChange={handleChange} name="country" placeholder="Country" className="mt-4 rounded text-black"/>
-                                <button type="submit" className="bg-site-red mt-4 rounded p-2 border border-2 border-white">Checkout</button>
+                                <button  disabled={loading} type="submit" className="bg-site-red mt-4 rounded p-2 border border-2 border-white">Checkout</button>
                                </form>
                              </div>
                         </div>
