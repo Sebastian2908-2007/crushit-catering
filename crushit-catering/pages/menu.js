@@ -9,7 +9,7 @@ const Menu = () => {
         <section className="w-full p-4 grid grid-cols-1 gap-4">
           {meals.map(meal => (
             <MenuItem 
-            key={meal._id}
+            key={meal.main}
             meal={meal}
             drinks={drinks}
             dispatch={dispatch}

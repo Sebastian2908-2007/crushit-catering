@@ -4,6 +4,7 @@ import Image from "next/image";
 import DrinkMenu from "./DrinkMenu";
 import { ADD_TO_CART,UPDATE_CART_QUANTITY} from "@/utils/actions";
 import clientDatabase from "@/utils/dexiedb";
+import returnRandomId from "@/utils/menuIdGen";
 const MenuItem = ({meal,drinks,dispatch,state}) => {
   const currentUrl = useRouter()
   const currentPage = currentUrl.pathname;
@@ -13,46 +14,37 @@ const MenuItem = ({meal,drinks,dispatch,state}) => {
   const [crtBtnTxt, setCrtBtnTxt] = useState('Add To Cart');
     /**destructure meal*/
     const {
-        _id,
         main,
         price,
         image
     } = meal;
     const {cart} = state;
-     
-  /**add to cart function*/
+
 const addToCart = () => {
-    if(!chosenDrink){
-        alert('you must choose a drink!!')
-        return;
-    }else{
-    //console.log(chosenDrink);
-    meal.drink = chosenDrink;
-   // console.log(meal);
-    }
-    const isItemInCart = cart.find((cartItem) => cartItem._id === _id);
-   if(isItemInCart) { 
-    dispatch({
-      type: UPDATE_CART_QUANTITY,
-      _id: _id,
-      purchaseQuantity: parseInt(isItemInCart.purchaseQuantity) + 1
-    });
-    /**below updates indexedDb in particular the purchaseQuantity field*/
-    clientDatabase.cart.update(meal._id,{purchaseQuantity:parseInt(isItemInCart.purchaseQuantity) + 1});
-    setCrtBtnTxt('+1 meal added');
-setTimeout(() => {
-  setCrtBtnTxt('Add To Cart');
-},3000);
-   }else { 
-    dispatch({
-      type: ADD_TO_CART,
-      /**purchaseQuantity is not on data from db its created right here for the global state */
-      meal: { ...meal, purchaseQuantity: 1 }
-    });
-    /**add to indexedDb with dexie */
-    clientDatabase.cart.add({_id: _id,main:main,drink:meal.drink,price:price,image:image,purchaseQuantity:1,total:0});
+  if(!chosenDrink){
+      alert('you must choose a drink!!')
+      return;
+  }else{
+
+  //console.log(chosenDrink);
+  meal.drink = chosenDrink;
+  meal._id = returnRandomId();
+  setCrtBtnTxt('added');
+  setTimeout(() => {
+  dispatch({
+    type: ADD_TO_CART,
+    /**purchaseQuantity is not on data from db its created right here for the global state */
+    meal: { ...meal, purchaseQuantity: 1 }
+  });
+  /**add to indexedDb with dexie */
+  clientDatabase.cart.add({_id: meal._id,main:main,drink:meal.drink,price:price,image:image,purchaseQuantity:1,total:0});
+  setChosenDrink(null);
+  setCrtBtnTxt('add again');
+  },2000);
+ // console.log(meal);
   }
 };
+
 
     return(
       currentPage === '/success' ? (
