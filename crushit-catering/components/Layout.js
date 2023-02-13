@@ -10,20 +10,29 @@ const AddressModal = dynamic(() =>import( './AdressModal'),{ssr: false});
 import Image from 'next/image';
 import {ImFacebook} from 'react-icons/im';
 import {FiTwitter,FiInstagram} from 'react-icons/fi';
+
 const Layout = ({ children }) => {
     const [showAddressModal, setShowAddressModal] = useState(false);
     const [prevAddress,setPrevAddress] = useState({streetAddress:null,city:null,state:null,zip:null,country:null});
     //console.log(prevAddress);
 return(
     <>
-    <header className='flex flex-row justify-between p-2  lg:shadow-2xl lg:shadow-site-yellow'>
-        <Link className='mt-[1%]' href='/'>
+    <header className='flex
+     flex-row
+     justify-between
+     items-center
+     p-2
+     shadow
+     shadow-site-yellow
+     lg:shadow-2xl
+     lg:shadow-site-yellow'
+    >
+        <Link className='mt-[1%] h-[8vh] pl-[15%] relative' href='/'>         
         <Image 
         src='/crushitcatering-logo.png'
         alt='crush it catering logo'
-        width={60}
-        height={60}
-        />
+        fill
+        />       
         </Link>
   <Cart setShowAddressModal={setShowAddressModal} setPrevAddress={setPrevAddress}/>
   <AddressModal showAddressModal={showAddressModal} setShowAddressModal={setShowAddressModal} prevAddress={prevAddress} setPrevAddress={setPrevAddress}/>

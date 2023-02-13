@@ -19,7 +19,7 @@ const DrinkMenu = ({drinks,setChosenDrink}) => {
          duration-150
          bg-site-red
          border
-         border-site-yellow
+         border-white
          rounded-lg
           focus:outline-none
           hover:border-site-yellow
@@ -36,9 +36,9 @@ const DrinkMenu = ({drinks,setChosenDrink}) => {
       >
         <div className="flex flex-row justify-center">
          
-          <span className="px-2 text-site-yellow text-xl"><GiSodaCan/></span>
+          <span className="px-2 text-white text-xl"><GiSodaCan/></span>
           <svg
-            className="w-4 h-4 text-site-yellow fill-current "
+            className="w-4 h-4 text-white fill-current "
             viewBox="0 0 20 20"
             aria-hidden="true"
           >

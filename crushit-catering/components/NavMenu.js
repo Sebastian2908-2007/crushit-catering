@@ -27,6 +27,7 @@ const NavMenu = () => {
        bg-site-red
        border
        border-site-yellow
+       min-[360px]:border-2
        rounded-lg
         focus:outline-none
         hover:border-site-yellow

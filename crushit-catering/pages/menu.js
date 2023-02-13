@@ -6,7 +6,17 @@ const Menu = () => {
     //console.log(drinks);
     //useEffect(() => {console.log(state.cart);},[state.cart]);
     return(
-        <section className="w-full p-4 grid grid-cols-1 gap-4">
+        <section className="w-full
+         p-4
+         grid
+         grid-cols-1
+         gap-4
+         min-[540px]:grid-cols-2
+         md:grid-cols-3
+         lg:grid-cols-4
+         lg:pt-8
+         "
+        >
           {meals.map(meal => (
             <MenuItem 
             key={meal.main}

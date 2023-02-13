@@ -48,31 +48,66 @@ const addToCart = () => {
 
     return(
       currentPage === '/success' ? (
-      <div className="flex flex-col items-center p-2 bg-[rgba(0,0,0,.6)] rounded w-full">
-        <div className="relative w-full h-[22vh]">
+      <div className="flex flex-col
+       items-center
+       p-2
+       bg-[rgba(255,191,55,.5)]
+       rounded
+       w-full
+       border-2
+       border-white
+      ">
+        <div className="
+         relative
+         w-full
+         h-[25vh]
+         border-2
+         border-white
+         md:h-[15vh]
+         lg:h-[25vh]
+        ">
             <Image
             src={image}
             alt='food item'
             fill
             />
         </div>
-        <span className="text-white mt-4 bg-site-red p-2 rounded text-site-yellow">{main}</span>
-        <span className="text-white mt-4 bg-site-red p-2 rounded text-site-yellow">${price}</span>
+        <span className="text-white mt-4 bg-site-red p-2 rounded text-white">{main}</span>
+        <span className="text-white mt-4 bg-site-red p-2 rounded text-white">${price}</span>
     </div>
       ):(
-      <div className="flex flex-col items-center p-2 bg-[rgba(0,0,0,.6)] rounded w-full">
-        <div className="relative w-full h-[22vh]">
+      <div className="flex
+       flex-col
+       items-center
+       p-2
+       bg-[rgba(255,191,55,.5)]
+       rounded 
+       w-full
+       border-2
+       border-white
+       "
+      >
+        <div className="
+         relative
+         w-full
+         h-[25vh]
+         border
+         border-white
+         rounded
+         md:h-[15vh]
+         lg:h-[25vh]
+        ">
             <Image
             src={image}
             alt='food item'
             fill
             />
         </div>
-        <span className="text-white mt-4 bg-site-red p-2 rounded text-site-yellow">{main}</span>
+        <span className="text-white mt-4 bg-site-red p-2 rounded text-white">{main}</span>
         <DrinkMenu drinks={drinks} setChosenDrink={setChosenDrink}/> 
-        <span className="text-white mt-4 bg-site-red p-2 rounded text-site-yellow">${price}</span>
+        <span className="text-white mt-4 bg-site-red p-2 rounded text-white">${price}</span>
          <button onClick={addToCart} className="bg-site-red text-white mt-4 p-2 rounded-full mt-4">{crtBtnTxt}</button>
-        <span className="text-site-yellow mt-4 text-xs  p-1 rounded">*All meals come with beans and rice</span>
+        <span className="text-white mt-4 text-xs  p-1 rounded">*All meals come with beans and rice</span>
       </div>
       )
     );

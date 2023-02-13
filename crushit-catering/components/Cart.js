@@ -111,6 +111,7 @@ function calculateTotal() {
         className='
          text-site-yellow
          text-2xl
+         min-[360px]:text-3xl
          
          '
          >
