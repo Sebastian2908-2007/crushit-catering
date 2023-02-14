@@ -26,7 +26,7 @@ const NavMenu = () => {
        duration-150
        bg-site-red
        border
-       border-site-yellow
+       border-[rgba(255,191,55,.8)]
        min-[360px]:border-2
        rounded-lg
         focus:outline-none
@@ -38,15 +38,17 @@ const NavMenu = () => {
         h-10
         m-[2%]
         z-30
+        md:h-12
+        xl:h-14
        "
       role="navigation"
       aria-haspopup="true"
     >
       <div className="flex flex-row">
        
-        <span className="px-2 text-site-yellow text-xl"><CgMenuRound/></span>
+        <span className="px-2 text-[rgba(255,191,55,.8)] text-xl"><CgMenuRound/></span>
         <svg
-          className="w-4 h-4 text-site-yellow fill-current "
+          className="w-4 h-4 text-[rgba(255,191,55,.8)] fill-current "
           viewBox="0 0 20 20"
           aria-hidden="true"
         >
@@ -62,7 +64,7 @@ const NavMenu = () => {
          hidden
          w-auto
          p-1
-         mt-3
+         mt-6
          space-y-2
          text-sm
          bg-site-red
@@ -70,6 +72,7 @@ const NavMenu = () => {
          border-site-yellow
          rounded-lg
          shadow-lg
+         xl:mt-8
          "
         aria-label="submenu"
       >

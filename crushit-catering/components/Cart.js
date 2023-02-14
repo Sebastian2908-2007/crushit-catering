@@ -109,10 +109,11 @@ function calculateTotal() {
         <button
         onClick={() => {setShowModal(true),createNewUser()}}
         className='
-         text-site-yellow
+         text-[rgba(255,191,55,.8)]
          text-2xl
          min-[360px]:text-3xl
-         
+         md:text-4xl
+         xl:text-5xl
          '
          >
             <FaCartArrowDown/>

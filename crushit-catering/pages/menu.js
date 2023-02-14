@@ -14,7 +14,9 @@ const Menu = () => {
          min-[540px]:grid-cols-2
          md:grid-cols-3
          lg:grid-cols-4
-         lg:pt-8
+         lg:pt-12
+         xl:pt-14
+         2xl:pt-16
          "
         >
           {meals.map(meal => (

@@ -23,11 +23,20 @@ return(
      items-center
      p-2
      shadow
-     shadow-site-yellow
+     shadow-[rgba(255,191,55)]
      lg:shadow-2xl
-     lg:shadow-site-yellow'
+     lg:shadow-[rgba(255,191,55)]'
     >
-        <Link className='mt-[1%] h-[8vh] pl-[15%] relative' href='/'>         
+        <Link className='
+         mt-[1%]
+         h-[8vh]
+         pl-[15%]
+         relative
+         min-[540px]:h-[10vh]
+         lg:h-[18vh]
+         2xl:h-[13vh]
+         '
+         href='/'>         
         <Image 
         src='/crushitcatering-logo.png'
         alt='crush it catering logo'

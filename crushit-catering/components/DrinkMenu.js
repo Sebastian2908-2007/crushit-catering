@@ -27,6 +27,7 @@ const DrinkMenu = ({drinks,setChosenDrink}) => {
           focus:border-site-yellow
          shrink
           w-32
+          min-[540px]:w-[4.4rem]
           h-10
           mt-4
           z-10
@@ -64,6 +65,7 @@ const DrinkMenu = ({drinks,setChosenDrink}) => {
            border-site-yellow
            rounded-lg
            shadow-lg
+           min-[540px]:w-[4.8rem]
            `}
           aria-label="submenu"
         >
