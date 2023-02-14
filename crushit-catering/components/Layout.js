@@ -21,7 +21,7 @@ return(
      flex-row
      justify-between
      items-center
-     p-2
+     p-1
      shadow
      shadow-[rgba(255,191,55)]
      lg:shadow-2xl
@@ -29,7 +29,7 @@ return(
     >
         <Link className='
          mt-[1%]
-         h-[8vh]
+         h-[7vh]
          pl-[15%]
          relative
          min-[540px]:h-[10vh]
@@ -40,6 +40,7 @@ return(
         <Image 
         src='/crushitcatering-logo.png'
         alt='crush it catering logo'
+        sizes="(max-width: 2560px) 22vw,"
         fill
         />       
         </Link>

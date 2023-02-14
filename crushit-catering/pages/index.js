@@ -22,26 +22,30 @@ export default function Home() {
       <section className='
        lg:mt-8
        w-full
-       lg:w-4/5
-       xl:w-[85%]
-       2xl:w-[95%]
-       2xl:mt-[3%]
+       lg:w-full       
+       2xl:mt-[2%]
        lg:shadow-lg
        lg:shadow-site-yellow
-       relative
+      
        '>
         <div className='
          md:w-full
          h-[40vh]
          md:h-[50vh]
-         lg:h-[80vh]
-        
+         lg:h-[85vh]
+         xl:h-[80vh]
          2xl:h-[85vh]
+         relative
         '>
         <Image
         src={heroPic}
         alt='some really nice nachos that will make you very hungry'
         fill
+        sizes="(max-width: 768px) 100vw,
+              (max-width: 1200px) 50vw,
+              33vw"
+        priority
+        quality={80}
         />
         </div>
       </section>
