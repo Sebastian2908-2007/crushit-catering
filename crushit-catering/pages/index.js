@@ -20,10 +20,8 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <section className='
-       lg:mt-8
        w-full
        lg:w-full       
-       2xl:mt-[2%]
        lg:shadow-lg
        lg:shadow-site-yellow
       
@@ -53,7 +51,7 @@ export default function Home() {
       <SigninModal/>
   
 
-      <section className='w-full xl:w-[98%] 2xl:w-[78%] p-4'>
+      <section className='mt-4 md:mt-8 w-full xl:w-[98%] 2xl:w-[78%] p-4'>
       <div className='
        w-full border-2
        border-white

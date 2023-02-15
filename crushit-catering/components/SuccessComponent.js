@@ -62,9 +62,22 @@ router.push('/success2');
     },[])
 
     return(
-        purchasedFood.map(meal => (
+        <section className="w-full
+        p-4
+        grid
+        grid-cols-1
+        gap-4
+        min-[540px]:grid-cols-2
+        md:grid-cols-3
+        lg:grid-cols-4
+        lg:pt-12
+        xl:pt-14
+        2xl:pt-16
+        ">
+       { purchasedFood.map(meal => (
             <MenuItem key={meal._id} meal={meal} state={state}/>
-        ))
+        ))}
+        </section>
     );
 };
 

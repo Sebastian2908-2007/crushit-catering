@@ -64,7 +64,7 @@ const addToCart = () => {
          border-2
          border-white
          md:h-[15vh]
-         lg:h-[25vh]
+         xl:h-[25vh]
         ">
             <Image
             src={image}
@@ -100,6 +100,9 @@ const addToCart = () => {
             <Image
             src={image}
             alt='food item'
+            sizes="(max-width: 768px) 100vw,
+            (max-width: 1200px) 50vw,
+            11vw"
             fill
             />
         </div>
@@ -114,7 +117,18 @@ const addToCart = () => {
         <DrinkMenu drinks={drinks} setChosenDrink={setChosenDrink}/> 
         </div>
         <span className="text-white mt-4 bg-site-red p-2 rounded text-white">${price}</span>
-         <button onClick={addToCart} className="bg-site-red text-white mt-4 p-2 rounded-full mt-4">{crtBtnTxt}</button>
+         <button onClick={addToCart} className="
+         bg-site-red
+          text-white
+          mt-4
+          p-2
+          rounded-full
+          mt-4
+          hover:border
+          hover:border-white
+          hover:bg-site-yellow
+          hover:text-site-red
+         ">{crtBtnTxt}</button>
         <span className="text-white mt-4 text-xs  p-1 rounded">*All meals come with beans and rice</span>
       </div>
       )

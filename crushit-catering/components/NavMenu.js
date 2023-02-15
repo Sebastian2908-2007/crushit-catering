@@ -29,10 +29,10 @@ const NavMenu = () => {
        border-[rgba(255,191,55,.8)]
        min-[360px]:border-2
        rounded-lg
-        focus:outline-none
-        hover:border-site-yellow
-        focus:shadow-outline
-        focus:border-site-yellow
+      focus:outline-none
+      hover:border-white
+      focus:shadow-outline
+      focus:border-site-yellow
        shrink
         w-20
         h-10
@@ -46,9 +46,9 @@ const NavMenu = () => {
     >
       <div className="flex flex-row">
        
-        <span className="px-2 text-[rgba(255,191,55,.8)] text-xl"><CgMenuRound/></span>
+        <span className="px-2 text-[rgba(255,191,55,.8)] text-xl hover:text-white"><CgMenuRound/></span>
         <svg
-          className="w-4 h-4 text-[rgba(255,191,55,.8)] fill-current "
+          className="w-4 h-4 text-[rgba(255,191,55,.8)] fill-current hover:text-white"
           viewBox="0 0 20 20"
           aria-hidden="true"
         >

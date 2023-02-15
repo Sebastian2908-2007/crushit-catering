@@ -75,7 +75,7 @@ const CartItem = ({meal}) => {
         <span className='text-site-yellow bg-site-red  mt-2 p-1 rounded w-48'>Drink: {meal.drink}</span>
         <span className='text-site-yellow bg-site-red  mt-2 p-1 rounded w-48'>
         <input
-        className='w-[7%] text-black rounded'
+        className='w-[7%] min-[1366px]:w-[14%] text-black rounded'
          type="number"
          placeholder={meal.purchaseQuantity}
          value={meal.purchaseQuantity}

@@ -54,17 +54,19 @@ export default function SigninModal() {
         onClick={shouldSignIn}
         className='
        mt-4
+       md:mt-8
        p-2
+       text
        font-semibold
        sticky
        top-0 
        border-2 
        hover:border-white
        hover:bg-site-yellow
-       hover:text-white
+       hover:text-site-red
        rounded-lg
        border-white    
-       text-site-yellow
+       text-white
        bg-site-red
        z-50
        '>

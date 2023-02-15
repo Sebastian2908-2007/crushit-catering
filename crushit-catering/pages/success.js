@@ -12,10 +12,12 @@ if(typeof window !== 'undefined') {
     shouldBeDelivered = pickUpDelivery
 }
     return(
-        <section>
-            <h1>Your Order has been placed successfully!</h1>
+        <section className="mt-8 md:w-full">
+            <div className="flex flex-col justify-center">
+            <h1 className="text-center">Your Order has been placed successfully!</h1>
+            <p className="text-center">A conformation has been sent to your email</p>
+            </div>
             { purchasedFood !==  undefined ? <SuccessComponent shouldBeDelivered={shouldBeDelivered} purchasedFood={purchasedFood} />: <div>NO SUCCESS COMP!</div> }
-            <p>A conformation has been sent to your email</p>
         </section>
     );
 };

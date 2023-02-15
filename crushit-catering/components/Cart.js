@@ -110,6 +110,7 @@ function calculateTotal() {
         onClick={() => {setShowModal(true),createNewUser()}}
         className='
          text-[rgba(255,191,55,.8)]
+         hover:text-white
          text-2xl
          min-[360px]:text-3xl
          md:text-4xl
