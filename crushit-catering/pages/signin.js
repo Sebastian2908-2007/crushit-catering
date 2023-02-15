@@ -50,43 +50,65 @@ const Signin = () => {
 
 		<section className="
 		 mt-[30%]
+		 min-[412px]:mt-[35%]
+		 lg:mt-[15%]
 		 flex
 		 flex-col
 		 items-center
 		 justify-center
 		 content-center
-		 justify-items-center">
+		 justify-items-center
+		 w-[85%]
+		 min-[412px]:w-[65%]
+		 md:w-[45%]
+		 lg:w-[35%]
+		 xl:w-[30%]
+		 2xl:w-[20%]
+		 ">
 		<form onSubmit={handleSubmit}
 		className='
-		flex flex-col
+		flex
+		flex-col
+		justify-between
 		w-full
 		mb-6
-		border
-		border-4
-		border-white
+		border		
+		border-site-yellow
 		p-4
 		rounded
-		'
-		
+		h-[30vh]
+		min-[412px]:h-[25vh]
+		md:h-[20vh]
+		lg:h-[33vh]
+		2xl:h-[18vh]
+		xl:items-center
+		'		
 		>
-			<label className="w-full text-center text-white">Sign in with email</label>
-			<input  name="email" placeholder="enter email to sign in" onChange={(e) => setEmail(e.target.value)}/>
+			<label className="
+			 w-full
+			 text-center
+			 text-white
+			 drop-shadow-site-yellow
+			">Sign in with email</label>
+			<input className='xl:w-[60%]'  name="email" placeholder="enter email to sign in" onChange={(e) => setEmail(e.target.value)}/>
 			<button className="
 			border
+			border-site-yellow
 			flex
 			flex-row
 			justify-center
 			mt-4 
-			rounded 
-			
+			rounded 			
 			p-2.5
-			hover:border-site-red 
+			hover:border-white 
 			hover:bg-site-yellow 
 			hover:text-site-red
-			type=submit"
+			xl:w-[60%]
+			"
+			type='submit'
 			>
 				<TfiEmail color="black"/>
-			  <span className="ml-[3rem]">Submit email</span>  
+			  <span className="ml-[3rem] drop-shadow-site-yellow">Submit email</span>  
 			</button>
 		</form>
 		<div className="flex flex-col">
@@ -101,28 +123,21 @@ const Signin = () => {
 					 rounded-md
 					 outline-none
 					 border
+					 border-site-yellow
 					 ring-offset-2
 					 ring-indigo-600
 					 focus:ring-2
 					 hover:border-site-red 
-					 hover:bg-site-yellow 
+					 hover:bg-white 
 					 hover:text-site-red
 					 "
 						key={name}
 						onClick={handleOAuthSignIn(name)}
 					>
 						<Icon color={name === 'twitter' ? '#1DA1F2':'rgba(218 ,41 ,28)'}/>
-						<span className="ml-2">Sign in with {name}</span> 
+						<span className="ml-2 drop-shadow-site-yellow">Sign in with {name}</span> 
 					</button>
 				))}
-							 <button
-			className="w-full mt-2 p-2.5 flex-1 text-site-yellow bg-site-red rounded-md outline-none border  ring-offset-2 ring-indigo-600 focus:ring-2"
-			onClick={() =>
-				setShowModal(false)
-			}
-		>
-			Cancel
-		</button>
 		</div>
 	</section>
 		
