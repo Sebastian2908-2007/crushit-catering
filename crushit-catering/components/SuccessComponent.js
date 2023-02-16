@@ -11,7 +11,11 @@ import { sendOrderconfirm } from "@/lib/emailerEndPoint";
 const SuccessComponent = ({purchasedFood,shouldBeDelivered}) => {
 
  const router = useRouter();
-
+ if(shouldBeDelivered[0].isDelivery === 0) {
+    shouldBeDelivered = false
+}else{
+    shouldBeDelivered = true
+}
 
      /**get the next auth session*/
      const { data: session } = useSession();
