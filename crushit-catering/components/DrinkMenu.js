@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import {GiSodaCan} from 'react-icons/Gi'
+import {GiSodaCan} from 'react-icons/gi'
 const DrinkMenu = ({drinks,setChosenDrink}) => {
    // console.log(chosenDrink);
     //console.log(setChosenDrink);
