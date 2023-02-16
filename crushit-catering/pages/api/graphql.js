@@ -9,6 +9,8 @@ dbConnect();
 const server = new ApolloServer({
     resolvers,
     typeDefs,
+    csrfPrevention: true,
+    cache: 'bounded',
   });
   
 
