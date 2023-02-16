@@ -9,7 +9,7 @@ import { sendOrderconfirm } from "@/lib/emailerEndPoint";
 
 
 const SuccessComponent = ({purchasedFood,shouldBeDelivered}) => {
-
+console.log(shouldBeDelivered);
  const router = useRouter();
  if(shouldBeDelivered[0].isDelivery === 0) {
     shouldBeDelivered = false
