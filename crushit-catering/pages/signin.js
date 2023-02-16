@@ -3,7 +3,7 @@ import { useRouter } from 'next/router';
 /**imports to use with next auth*/
 import { useSession, signIn} from 'next-auth/react';
 import {BsTwitter,BsGoogle} from 'react-icons/bs';
-import {TfiEmail} from 'react-icons/Tfi';
+import {TfiEmail} from 'react-icons/tfi';
 
 /**these will have the name and provider of which to log in with*/
 
