@@ -42,7 +42,7 @@ async function dbConnect() {
     cached.promise = null
     throw e
   }
-  console.log('http://localhost:3000//api/graphql');
+  //console.log('http://localhost:3000//api/graphql');
   return cached.conn
 }
 

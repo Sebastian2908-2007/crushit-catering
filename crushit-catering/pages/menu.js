@@ -1,8 +1,11 @@
+import { useState } from 'react';
 import { useStoreContext } from '@/utils/Globalstate';
 import MenuItem from '@/components/MenuItem';
+import NoDrinkModal from '@/components/NoDrinkModal';
 const Menu = () => {
     const [state, dispatch] = useStoreContext();
     const {meals,drinks} = state;
+    const[showNoDrinkModal,setShowNoDrinkModal]=useState(false);
     //console.log(drinks);
     //useEffect(() => {console.log(state.cart);},[state.cart]);
     return(
@@ -19,6 +22,7 @@ const Menu = () => {
          2xl:pt-16
          "
         >
+          <NoDrinkModal showNoDrinkModal={showNoDrinkModal}setShowNoDrinkModal={setShowNoDrinkModal} />
           {meals.map(meal => (
             <MenuItem 
             key={meal.main}
@@ -26,6 +30,7 @@ const Menu = () => {
             drinks={drinks}
             dispatch={dispatch}
             state={state}
+            setShowNoDrinkModal={setShowNoDrinkModal}
             />
           ))}
         </section>

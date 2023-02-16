@@ -1,17 +1,18 @@
-import { useState,useEffect } from "react";
+import { useState} from "react";
 import { useRouter } from "next/router";
 import Image from "next/image";
 import DrinkMenu from "./DrinkMenu";
-import { ADD_TO_CART,UPDATE_CART_QUANTITY} from "@/utils/actions";
+import { ADD_TO_CART} from "@/utils/actions";
 import clientDatabase from "@/utils/dexiedb";
 import returnRandomId from "@/utils/menuIdGen";
-const MenuItem = ({meal,drinks,dispatch,state}) => {
+const MenuItem = ({meal,drinks,dispatch,state,setShowNoDrinkModal}) => {
   const currentUrl = useRouter()
   const currentPage = currentUrl.pathname;
     /**state for chosen drink to be passed to drinkmenu*/
     const [chosenDrink,setChosenDrink] = useState(null);
       /**this is state for the text that resides in the product item buttons so that it can be changed when adding to cart */
   const [crtBtnTxt, setCrtBtnTxt] = useState('Add To Cart');
+  
     /**destructure meal*/
     const {
         main,
@@ -22,7 +23,7 @@ const MenuItem = ({meal,drinks,dispatch,state}) => {
 
 const addToCart = () => {
   if(!chosenDrink){
-      alert('you must choose a drink!!')
+      setShowNoDrinkModal(true)
       return;
   }else{
 

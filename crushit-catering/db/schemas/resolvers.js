@@ -6,7 +6,7 @@ const resolvers = {
       // meals
       getUsers: async (parent,args,context) => {
         const url = new URL(context.headers.referer);
-        console.log(url.origin);
+        //console.log(url.origin);
       //console.log(context);
         try {
           const Users = await User.find({});
@@ -33,9 +33,9 @@ const resolvers = {
         // this will get the referer url so we can use it f;or redirect upon a successfull transaction
         const url = new URL(context.headers.referer);
         const order = new Order({ meals: args.meals });
-        console.log(order);
+       // console.log(order);
         const { meals } = await order.populate('meals');
-        console.log(meals);
+       // console.log(meals);
          /**populate meal image data*/
          /*for (let i = 0; i < meals.length; i++) {
          await meals[i].populate('image')
@@ -90,7 +90,7 @@ const resolvers = {
           console.log(err)
         }
        }
-       console.log('user is already active');
+      // console.log('user is already active');
       },
       updateUserAddress: async (_, { input }) => {
   
@@ -121,7 +121,7 @@ const resolvers = {
       addOrder: async (_, { isDelivery,userName,meals }) => {
         //console.log(userName);
         //console.log(isDelivery);
-        console.log(meals);
+        //console.log(meals);
         if(!meals) {
           return
         }
@@ -145,7 +145,7 @@ const resolvers = {
           throw new Error('mealo no encontrado')
         }
   
-        console.log(user);
+        //console.log(user);
   
         return user;
       },

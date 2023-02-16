@@ -8,12 +8,12 @@ let shouldBeDelivered;
     purchasedFood = useLiveQuery(() => clientDatabase.cart.toArray(),[]);
     shouldBeDelivered  = useLiveQuery(() =>  clientDatabase.isDelivery.toArray(),[]);
      
-    console.log('I',shouldBeDelivered);
-    console.log('I',purchasedFood);
+    //console.log('I',shouldBeDelivered);
+    //console.log('I',purchasedFood);
     
 
-console.log(shouldBeDelivered);
-    console.log(purchasedFood);
+//console.log(shouldBeDelivered);
+    //console.log(purchasedFood);
    
     return(
         <section className="mt-8 md:w-full">

@@ -55,7 +55,7 @@ const handleSubmit = async (event) => {
 if(status){
     try{
         if(!prevAddress.streetAddress) {
-            console.log('no Prev address',prevAddress);
+            //console.log('no Prev address',prevAddress);
     await addAddress({
         variables:{
             userName: session.user.email,
@@ -69,7 +69,7 @@ if(status){
     setShowAddressModal(false);
     goToCheckout();
 }else{
-    console.log('YES Prev address',prevAddress);
+    //console.log('YES Prev address',prevAddress);
     await addAddress({
         variables:{
             userName: session.user.email,

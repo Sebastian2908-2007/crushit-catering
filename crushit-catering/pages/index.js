@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import Head from 'next/head';
 import Image from 'next/image';
 import heroPic from '../public/cic-home-hero.png'
@@ -6,11 +7,12 @@ import displayPic2 from '../public/cic-display-pic (2).png'
 import displayPic3 from '../public/cic-display-pic (3).png'
 import displayPic4 from '../public/cic-display-pic (4).png'
 import displayPic5 from '../public/cic-display-pic (5).png'
-import SigninModal from '@/components/SigninModal';
+import SigninModal from '@/pages/SigninModal';
+import CheckEmailModal from '@/components/CheckEmailModal';
 
 
 export default function Home() {
-
+const[showCheckEmailModal,setShowCheckEmailModal]=useState(false);
   return (
     <>
       <Head>
@@ -48,8 +50,11 @@ export default function Home() {
         </div>
       </section>
 
-      <SigninModal/>
-  
+      <SigninModal setShowCheckEmailModal={setShowCheckEmailModal}/>
+      <CheckEmailModal 
+      showCheckEmailModal={showCheckEmailModal}
+      setShowCheckEmailModal={setShowCheckEmailModal}
+      />
 
       <section className='mt-4 md:mt-8 w-full xl:w-[98%] 2xl:w-[78%] p-4'>
       <div className='

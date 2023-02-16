@@ -23,6 +23,7 @@ const Cart = ({setShowAddressModal,setPrevAddress}) => {
     const [showModal, setShowModal] = useState(false);
     const [state, dispatch] = useStoreContext();
     const {cart} = state;
+    //console.log(session.user.email);
    
     /**function to calculate the total */
 function calculateTotal() {
@@ -97,7 +98,7 @@ function calculateTotal() {
     } = userData.getUser.address;
     
     if(!streetAddress || !city || !state || !zip || !country ){
-        console.log('no prev address!!!')
+        //console.log('no prev address!!!')
          return;
         } 
     setPrevAddress({streetAddress:streetAddress,city:city,state:state,zip:zip,country:country});

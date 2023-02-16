@@ -9,7 +9,7 @@ import { sendOrderconfirm } from "@/lib/emailerEndPoint";
 
 
 const SuccessComponent = ({purchasedFood,shouldBeDelivered}) => {
-console.log(shouldBeDelivered);
+//console.log(shouldBeDelivered);
  const router = useRouter();
  if(shouldBeDelivered[0].isDelivery === 0) {
     shouldBeDelivered = false
@@ -41,7 +41,7 @@ const emailData = {
     userEmail: userName, 
     orderNumber: mostRecentOrder._id
 };
-console.log(emailData);
+//console.log(emailData);
 await sendOrderconfirm(emailData);
 
 router.push('/success2');
@@ -55,7 +55,7 @@ router.push('/success2');
     useEffect(() => {
 
         setTimeout(() => {
-            console.log('timeout running');
+            //console.log('timeout running');
                
                     addOrderToDb();
                     purchasedFood = null;

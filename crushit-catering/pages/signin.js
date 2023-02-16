@@ -4,6 +4,7 @@ import { useRouter } from 'next/router';
 import { useSession, signIn} from 'next-auth/react';
 import {BsTwitter,BsGoogle} from 'react-icons/bs';
 import {TfiEmail} from 'react-icons/tfi';
+import CheckEmailModal from '@/components/CheckEmailModal';
 
 /**these will have the name and provider of which to log in with*/
 
@@ -20,11 +21,12 @@ const providers = [
 
 const Signin = () => {
 
-    const { data: session, status } = useSession()
-	const { push } = useRouter()
-	const [email, setEmail] = useState('')
+    const { data: session, status } = useSession();
+	const { push } = useRouter();
+	const [email, setEmail] = useState('');
+	const[showCheckEmailModal,setShowCheckEmailModal]=useState(false);
 
-	console.log(session)
+	//console.log(session)
 	if (status === 'loading') return <h1>Checking Authentication...</h1>
 
 	if (session) {
@@ -43,7 +45,8 @@ const Signin = () => {
 
 		if (!email) return false
 
-		signIn('email', { email, redirect: false })
+		signIn('email', { email, redirect: false });
+		setShowCheckEmailModal(true);
 	}
 
     return(
@@ -65,6 +68,10 @@ const Signin = () => {
 		 xl:w-[30%]
 		 2xl:w-[20%]
 		 ">
+			<CheckEmailModal 
+			showCheckEmailModal={showCheckEmailModal}
+			setShowCheckEmailModal={setShowCheckEmailModal}
+			/>
 		<form onSubmit={handleSubmit}
 		className='
 		flex
