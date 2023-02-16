@@ -68,7 +68,7 @@ const resolvers = {
           payment_method_types: ['card'],
           line_items,
           mode: 'payment',
-          success_url: `${url.origin}/success?session_id={CHECKOUT_SESSION_ID}`,
+          success_url: `${url.origin}/success1?session_id={CHECKOUT_SESSION_ID}`,
           cancel_url: `${url}`
         });
         return { session: session.id };

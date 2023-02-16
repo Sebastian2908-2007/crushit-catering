@@ -1,16 +1,14 @@
-import dynamic from "next/dynamic";
 import clientDatabase from "@/utils/dexiedb";
 import { useLiveQuery } from "dexie-react-hooks";
-const SuccessComponent = dynamic(() =>import('@/components/SuccessComponent'),{ssr: false});
-
+import SuccessComponent from "./SuccessComponent";
 const Success = () => {
 let purchasedFood;
 let shouldBeDelivered;
-if(typeof window !== 'undefined') {
+
     purchasedFood = useLiveQuery(() => clientDatabase.cart.toArray(),[clientDatabase]);
     const pickUpDelivery = useLiveQuery(() =>  clientDatabase.isDelivery.toArray(),[]);
     shouldBeDelivered = pickUpDelivery
-}
+
     return(
         <section className="mt-8 md:w-full">
             <div className="flex flex-col justify-center">

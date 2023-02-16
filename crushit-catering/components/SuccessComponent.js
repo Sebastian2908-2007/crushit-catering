@@ -7,18 +7,17 @@ import { ADD_ORDER } from "@/utils/mutations";
 import {useSession} from 'next-auth/react';
 import { sendOrderconfirm } from "@/lib/emailerEndPoint";
 
-const SuccessComponent = ({shouldBeDelivered,purchasedFood}) => {
+
+const SuccessComponent = ({purchasedFood,shouldBeDelivered}) => {
+
  const router = useRouter();
-if(shouldBeDelivered[0].isDelivery === 0) {
-    shouldBeDelivered = false
-}else{
-    shouldBeDelivered = true
-}
+
 
      /**get the next auth session*/
      const { data: session } = useSession();
     const [addOrder,{data}] = useMutation(ADD_ORDER);
     const [state, dispatch] = useStoreContext();
+
     
    const addOrderToDb = async () => {
         try{
@@ -74,7 +73,7 @@ router.push('/success2');
         xl:pt-14
         2xl:pt-16
         ">
-       { purchasedFood.map(meal => (
+       {purchasedFood && purchasedFood.map(meal => (
             <MenuItem key={meal._id} meal={meal} state={state}/>
         ))}
         </section>
