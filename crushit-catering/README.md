@@ -1,38 +1,50 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Deployed App
+https://crushit-catering.vercel.app/
 
-## Getting Started
+# crushit-catering
+ https://github.com/Sebastian2908-2007/crushit-catering
+ ## Description
 
-First, run the development server:
+This is an app that allows you to order food online for either pickup or delivery
+    
+ ## Table Of Contents
+* [Description](#description)
+* [Installation](#installation)
+* [Usage](#usage)
+* [Contributors](#contributors)
+* [Test](#test)
+* [Contact](#contact)
+* [Questions](#questions)
+    
+ ## Installation
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+@apollo/client,@apollo/server,@as-integrations/next,@next-auth/mongodb-adapter,next/font,@stripe/stripe-js,dayjs,deepmerge,dexie,dexie-react-hooks,graphql,graphql-tag,lodash,mongodb,mongoose,next-auth,nodemailer,react-icons,stripe,tailwindcss-dropdown
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Usage
+  This app is used to order food online either for pickup or delivery. Google, email, or Twitter is used to authenticate and get pertinent user info for sending emails, etc. Stripe is used for a secure checkout process.
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+ ## Contributors
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+  Sebastian Crespin Bowen
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+ ## Test 
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+ N/A
+    
+## Contact
 
-## Learn More
+ <sebastian@topdev.tech>
 
-To learn more about Next.js, take a look at the following resources:
+## Questions
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+ Sebastian2908-2007
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+If you Have any Questions email me @ <sebastian@topdev.tech>
 
-## Deploy on Vercel
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Photo's
+![crush-it-fb](https://user-images.githubusercontent.com/77297220/221481934-1e7d5dce-6b2a-48b4-a522-2e1b88f36bea.png)
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+![cic2](https://user-images.githubusercontent.com/77297220/221481936-b9c824f4-4295-4bf7-b97b-ceff108d87aa.png)
+
+![cic](https://user-images.githubusercontent.com/77297220/221481944-6d243747-296f-4fb8-ac04-741c2dbf57cb.png)
