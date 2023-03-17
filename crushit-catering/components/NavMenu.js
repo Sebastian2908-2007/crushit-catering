@@ -15,7 +15,7 @@ const NavMenu = () => {
 	}
 
     return(
-       /* <button
+        <button
        onClick={() => setOpen(!open)}
       className="
        relative
@@ -46,38 +46,9 @@ const NavMenu = () => {
        "
       role="navigation"
       aria-haspopup="true"
-    >*/
-   
-      <button
-      onClick={() => setOpen(!open)}
-      className="
-       relative
-       px-2
-       py-1
-       text-sm
-       font-semibold
-      leading-relaxed
-       text-white
-       transition-colors
-       duration-150
-       bg-site-red
-       border
-       border-white
-       rounded-lg
-        focus:outline-none
-        hover:border-site-yellow
-        focus:shadow-outline
-        focus:border-site-yellow
-       shrink
-        w-32
-        min-[540px]:w-[4.4rem]
-        h-10
-        mt-4
-        z-10
-       "
-      role="navigation"
-      aria-haspopup="true"
     >
+   
+   
       <div className="flex flex-row">
        
         <span className="px-2 text-[rgba(255,191,55,.8)] text-xl hover:text-white"><CgMenuRound/></span>
@@ -98,7 +69,7 @@ const NavMenu = () => {
         overflow-auto
           ${open ? 'h-30':'hidden'}
          left-0
-         w-auto
+         w-5/6
          p-1
          mt-6
          space-y-2
@@ -189,3 +160,4 @@ export default NavMenu;
  * ul absolute 
  * a inline-block 
  */
+  /* w-auto*/
