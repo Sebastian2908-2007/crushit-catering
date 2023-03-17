@@ -15,7 +15,7 @@ const NavMenu = () => {
 	}
 
     return(
-        <button
+       /* <button
        onClick={() => setOpen(!open)}
       className="
        relative
@@ -40,9 +40,40 @@ const NavMenu = () => {
         w-20
         h-10
         m-[2%]
-        z-30
+        z-10
         md:h-12
         xl:h-14
+       "
+      role="navigation"
+      aria-haspopup="true"
+    >*/
+   
+      <button
+      onClick={() => setOpen(!open)}
+      className="
+       relative
+       px-2
+       py-1
+       text-sm
+       font-semibold
+      leading-relaxed
+       text-white
+       transition-colors
+       duration-150
+       bg-site-red
+       border
+       border-white
+       rounded-lg
+        focus:outline-none
+        hover:border-site-yellow
+        focus:shadow-outline
+        focus:border-site-yellow
+       shrink
+        w-32
+        min-[540px]:w-[4.4rem]
+        h-10
+        mt-4
+        z-10
        "
       role="navigation"
       aria-haspopup="true"
