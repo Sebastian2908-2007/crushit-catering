@@ -63,8 +63,10 @@ const NavMenu = () => {
         </svg>
       </div>
       <ul
-        className={`left-0
+        className={`
+        overflow-auto
           ${open ? 'h-30':'hidden'}
+         left-0
          w-auto
          p-1
          mt-6
