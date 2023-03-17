@@ -40,7 +40,7 @@ const NavMenu = () => {
         w-20
         h-10
         m-[2%]
-        z-50
+        z-10
         md:h-12
         xl:h-14
        "
@@ -66,8 +66,9 @@ const NavMenu = () => {
       </div>
       <ul
         className={`
+        relative
         overflow-auto
-          ${open ? 'h-40':'hidden'}
+          ${open ? 'h-30':'hidden'}
          left-0
          w-auto
          p-1
