@@ -67,7 +67,7 @@ const NavMenu = () => {
       <ul
         className={`
         overflow-auto
-          ${open ? 'h-30':'hidden'}
+          ${open ? 'h-40':'hidden'}
          left-0
          w-auto
          p-1
