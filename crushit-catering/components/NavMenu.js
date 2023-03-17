@@ -40,7 +40,7 @@ const NavMenu = () => {
         w-20
         h-10
         m-[2%]
-        z-10
+        z-50
         md:h-12
         xl:h-14
        "
@@ -69,7 +69,7 @@ const NavMenu = () => {
         overflow-auto
           ${open ? 'h-30':'hidden'}
          left-0
-         w-5/6
+         w-auto
          p-1
          mt-6
          space-y-2
